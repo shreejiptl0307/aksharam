@@ -91,7 +91,7 @@ export default function Hero() {
           fill
           priority
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1440px"
-          className={`object-cover object-[center_20%] sm:object-[center_25%] transition-transform duration-1000 ease-out ${
+          className={`object-cover object-top sm:object-[center_20%] md:object-[center_25%] transition-transform duration-1000 ease-out ${
             loaded ? "scale-100" : "scale-[1.025]"
           }`}
         />

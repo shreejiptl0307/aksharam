@@ -60,13 +60,13 @@ export default function AboutPage() {
           <div className="lg:col-span-7 space-y-8 md:space-y-12">
             {/* Image 1: Atelier / Production */}
             <ScrollReveal duration={800}>
-              <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#ECEBE7]">
+              <div className="relative w-full aspect-[4/5] sm:aspect-[4/3] overflow-hidden bg-[#ECEBE7]">
                 <Image
                   src="/images/about/about-atelier.jpg"
                   alt="Aksharam Atelier Surat craftsmanship and production"
                   fill
                   sizes="(max-width: 1024px) 100vw, 55vw"
-                  className="object-cover object-center transition-transform duration-700 ease-out hover:scale-[1.01]"
+                  className="object-cover object-top transition-transform duration-700 ease-out hover:scale-[1.01]"
                 />
               </div>
               <p className="text-xs text-[#66635F] font-light mt-2.5">

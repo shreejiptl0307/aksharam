@@ -17,6 +17,10 @@ export interface CollectionItem {
   description: string;
   fabrics?: string;
   silhouettes?: string;
+  mobileAspect?: string;
+  desktopAspect?: string;
+  mobilePosition?: string;
+  desktopPosition?: string;
   gallery: CollectionImage[];
   craftsmanshipNote?: string;
   customisationNote?: string;
@@ -33,6 +37,10 @@ export const collectionsData: CollectionItem[] = [
     hoverImage: "/images/collections/featured-shisha.jpg",
     alt: "Model wearing embroidered purple Shisha mirrorwork bridal lehenga",
     hoverAlt: "Detail of embellished Shisha mirrorwork lehenga ensemble",
+    mobileAspect: "aspect-[4/5]",
+    desktopAspect: "md:aspect-[4/5]",
+    mobilePosition: "object-top",
+    desktopPosition: "md:object-top",
     description: "Detailed hand-locked mirror embroidery across fluid celebratory lehenga silhouettes.",
     fabrics: "Georgette, Raw Silk, Organza",
     silhouettes: "Flared lehenga, A-line cut, Tiered skirt with structured blouse and dupatta",
@@ -66,6 +74,10 @@ export const collectionsData: CollectionItem[] = [
     hoverImage: "/images/lookbook/lookbook-03.jpg",
     alt: "Model draped in handcrafted saree with contrast velvet blouse and border",
     hoverAlt: "Alternate drape in mint green festive tissue silk saree",
+    mobileAspect: "aspect-[4/5]",
+    desktopAspect: "md:aspect-[4/5]",
+    mobilePosition: "object-top",
+    desktopPosition: "md:object-top",
     description: "Draped opulence with fine border detailing, artisanal pallu finishes and modern textures.",
     fabrics: "Tissue Silk, Pure Crêpe, Chiffon",
     silhouettes: "Classic 6-yard drape, Concept pre-stitched saree",
@@ -99,6 +111,10 @@ export const collectionsData: CollectionItem[] = [
     hoverImage: "/images/lookbook/lookbook-05.jpg",
     alt: "Model wearing deep purple crush silk bridal lehenga with heavy zardozi",
     hoverAlt: "Dusty blue embroidered bridal festive silhouette",
+    mobileAspect: "aspect-[4/5]",
+    desktopAspect: "md:aspect-[4/5]",
+    mobilePosition: "object-top",
+    desktopPosition: "md:object-top",
     description: "Grand bridal lehengas featuring traditional zardozi, zari threadwork and voluminous flares.",
     fabrics: "Raw Silk, Heavy Georgette, Crush Silk",
     silhouettes: "Multi-panel flared lehenga, Double dupatta styling",
@@ -132,6 +148,10 @@ export const collectionsData: CollectionItem[] = [
     hoverImage: "/images/lookbook/lookbook-06.jpg",
     alt: "Model wearing mint green tissue silk saree",
     hoverAlt: "Rust orange handcrafted festive tissue drape",
+    mobileAspect: "aspect-[4/5]",
+    desktopAspect: "md:aspect-[4/5]",
+    mobilePosition: "object-top",
+    desktopPosition: "md:object-top",
     description: "Luminous tissue drapes and festive sarees with fine borders and contemporary drapes.",
     fabrics: "Metallic Tissue, Chanderi Silk, Organza",
     silhouettes: "Classic festive drape with handcrafted blouse",
@@ -165,6 +185,10 @@ export const collectionsData: CollectionItem[] = [
     hoverImage: "/images/lookbook/lookbook-04.jpg",
     alt: "Model in lavender tissue bridesmaid lehenga set",
     hoverAlt: "Mustard festive bridesmaid ensemble with delicate zari",
+    mobileAspect: "aspect-[4/5]",
+    desktopAspect: "md:aspect-[4/5]",
+    mobilePosition: "object-top",
+    desktopPosition: "md:object-top",
     description: "Lightweight, celebratory lehengas in pastel and vibrant festive palettes.",
     fabrics: "Silk Chanderi, Georgette, Organza",
     silhouettes: "A-line lehenga skirt, Crop top blouse & dupatta",
@@ -198,6 +222,10 @@ export const collectionsData: CollectionItem[] = [
     hoverImage: "/images/collections/collection-contemporary.jpg",
     alt: "Model wearing sunlit yellow festive tissue lehenga with gold borders",
     hoverAlt: "Contemporary celebratory lehenga silhouette",
+    mobileAspect: "aspect-[4/5]",
+    desktopAspect: "md:aspect-[4/5]",
+    mobilePosition: "object-top",
+    desktopPosition: "md:object-top",
     description: "Sunlit occasion lehengas combining contemporary styling with traditional craftsmanship.",
     fabrics: "Tissue Silk, Lurex Chiffon, Georgette",
     silhouettes: "Tiered flared lehenga with hand-finished dupatta",

@@ -10,15 +10,16 @@ export default function CraftSection() {
 
   return (
     <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-5 sm:px-8 lg:px-16 max-w-[1440px] mx-auto border-t border-[#E4E2DD]">
-      {/* Top Row: Heading/Text on Left, Interactive Garment/Detail Photo on Right */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 md:gap-12 items-end mb-8 sm:mb-12 md:mb-16">
-        <div className="md:col-span-8 max-w-xl">
+      {/* Top Section: Heading & Editorial Garment/Detail Photo */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 md:gap-12 items-end mb-10 sm:mb-12 md:mb-16">
+        <div className="md:col-span-7 lg:col-span-8 max-w-xl">
           <ScrollReveal>
             <p className="text-xs uppercase tracking-[0.2em] text-[#66635F] mb-2 sm:mb-3">
+              <span className="text-[#DB2D1C] font-semibold mr-1.5">||</span>
               Our Approach
             </p>
             <h2
-              style={{ fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}
+              style={{ fontSize: "clamp(1.625rem, 4.2vw, 2.5rem)" }}
               className="font-light text-[#171717] tracking-tight leading-tight"
             >
               Attention to the details that matter.
@@ -26,20 +27,20 @@ export default function CraftSection() {
           </ScrollReveal>
         </div>
 
-        {/* Small Garment / Detail Crossfade Image Container */}
-        <div className="md:col-span-4 flex flex-col items-start md:items-end">
+        {/* Editorial Garment / Detail Crossfade Image Container */}
+        <div className="md:col-span-5 lg:col-span-4 flex flex-col items-start md:items-end mt-4 sm:mt-6 md:mt-0">
           <ScrollReveal delay={100}>
             <div
               onMouseEnter={() => setShowDetail(true)}
               onMouseLeave={() => setShowDetail(false)}
-              className="relative w-full max-w-[240px] sm:max-w-[280px] aspect-[4/3] overflow-hidden bg-[#ECEBE7] mb-2"
+              className="relative w-full max-w-[320px] sm:max-w-[360px] md:max-w-[280px] aspect-[4/3] sm:aspect-[4/3] md:aspect-[4/3] overflow-hidden bg-[#ECEBE7] mb-2.5 shadow-xs"
             >
               {/* Full Garment Look */}
               <Image
                 src="/images/collections/collection-lehenga.jpg"
                 alt="Aksharam bridal lehenga craftsmanship"
                 fill
-                sizes="(max-width: 640px) 100vw, 280px"
+                sizes="(max-width: 640px) 90vw, (max-width: 768px) 360px, 280px"
                 className={`object-cover object-top transition-opacity duration-500 ease-out ${
                   showDetail ? "opacity-0" : "opacity-100"
                 }`}
@@ -50,7 +51,7 @@ export default function CraftSection() {
                 src="/images/craft/craft-detail-01.jpg"
                 alt="Close-up macro detail of handcrafted embroidery on Aksharam fabric"
                 fill
-                sizes="(max-width: 640px) 100vw, 280px"
+                sizes="(max-width: 640px) 90vw, (max-width: 768px) 360px, 280px"
                 className={`object-cover object-center transition-opacity duration-500 ease-out ${
                   showDetail ? "opacity-100" : "opacity-0"
                 }`}

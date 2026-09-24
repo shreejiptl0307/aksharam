@@ -74,7 +74,7 @@ export default function LookbookGrid() {
               <button
                 type="button"
                 onClick={() => openViewer(3)}
-                className="relative w-full aspect-[4/3] sm:aspect-[3/2] overflow-hidden bg-[#ECEBE7] block text-left group cursor-zoom-in focus:outline-hidden select-none mb-2"
+                className="relative w-full aspect-[4/5] sm:aspect-[3/2] overflow-hidden bg-[#ECEBE7] block text-left group cursor-zoom-in focus:outline-hidden select-none mb-2"
                 aria-label={`View look: ${lookbookImages[3].alt}`}
               >
                 <Image
@@ -103,7 +103,7 @@ export default function LookbookGrid() {
               <button
                 type="button"
                 onClick={() => openViewer(5)}
-                className="relative w-full aspect-[4/3] sm:aspect-[3/2] overflow-hidden bg-[#ECEBE7] block text-left group cursor-zoom-in focus:outline-hidden select-none mb-2"
+                className="relative w-full aspect-[4/5] sm:aspect-[3/2] overflow-hidden bg-[#ECEBE7] block text-left group cursor-zoom-in focus:outline-hidden select-none mb-2"
                 aria-label={`View look: ${lookbookImages[5].alt}`}
               >
                 <Image

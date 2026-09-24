@@ -32,7 +32,7 @@ export default function CollectionCard({
         onClick={handleImageClick}
         onTouchStart={() => setIsTapped((prev) => !prev)}
         onMouseLeave={() => setIsTapped(false)}
-        className="relative w-full aspect-[4/5] overflow-hidden bg-[#ECEBE7] mb-3.5 cursor-pointer"
+        className={`relative w-full ${item.mobileAspect || "aspect-[4/5]"} ${item.desktopAspect || "md:aspect-[4/5]"} overflow-hidden bg-[#ECEBE7] mb-3.5 cursor-pointer`}
         role="button"
         tabIndex={0}
         aria-label={`Quick view: ${item.title}`}
@@ -49,7 +49,7 @@ export default function CollectionCard({
           alt={item.alt}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className={`object-cover object-top transition-all duration-500 ease-out ${
+          className={`object-cover ${item.mobilePosition || "object-top"} ${item.desktopPosition || "md:object-top"} transition-all duration-500 ease-out ${
             item.hoverImage
               ? isTapped
                 ? "opacity-0 scale-[1.015]"
@@ -65,7 +65,7 @@ export default function CollectionCard({
             alt={item.hoverAlt || item.alt}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className={`object-cover object-top transition-all duration-500 ease-out ${
+            className={`object-cover ${item.mobilePosition || "object-top"} ${item.desktopPosition || "md:object-top"} transition-all duration-500 ease-out ${
               isTapped
                 ? "opacity-100 scale-[1.015]"
                 : "opacity-0 group-hover:opacity-100 group-hover:scale-[1.015]"

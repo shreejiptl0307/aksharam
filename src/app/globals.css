@@ -2,7 +2,6 @@
 
 @theme {
   --font-sans: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
 
   --color-bg-main: #FAFAF8;
   --color-bg-alt: #F3F2EE;
@@ -10,11 +9,14 @@
   --color-text-muted: #66635F;
   --color-border-subtle: #E4E2DD;
   --color-black-solid: #171717;
+  --color-aksharam-red: #DB2D1C;
 }
 
 :root {
   --background: #FAFAF8;
   --foreground: #171717;
+  --aksharam-red: #DB2D1C;
+  --ease-fashion: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html {
@@ -54,8 +56,71 @@ body {
   background: #171717;
 }
 
+/* Nav Link Underline Reveal */
+.nav-link-animated {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-link-animated::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #171717;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link-animated:hover::after,
+.nav-link-animated.active-link::after {
+  transform: scaleX(1);
+}
+
+/* Subtle Hotspot Pulse */
+@keyframes hotspot-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.15;
+  }
+}
+
+.animate-hotspot-pulse {
+  animation: hotspot-pulse 3.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+/* Floating WhatsApp Entrance */
+@keyframes whatsapp-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-whatsapp-entrance {
+  animation: whatsapp-fade-in 600ms cubic-bezier(0.22, 1, 0.36, 1) 400ms forwards;
+}
+
+/* Accessibility: Full reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import CustomisationSection from "@/components/CustomisationSection";
-import { collectionsData } from "@/data/collections";
+import CollectionsFilterGrid from "@/components/CollectionsFilterGrid";
 import { getWhatsAppUrl } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
   title: "Collections | Aksharam Ethnic LLP",
   description:
-    "Explore Aksharam Ethnic LLP's signature ethnic collections: Shisha Lehengas, Sarees, Dresses, Bridesmaid, Co-ords, and Contemporary Ethnic wear.",
+    "Explore Aksharam Ethnic LLP's signature handcrafted lehengas and festive sarees designed for boutiques, retailers and modern wardrobes.",
 };
 
 export default function CollectionsPage() {
@@ -18,50 +16,20 @@ export default function CollectionsPage() {
       <PageHeader
         label="Catalogues"
         title="Collections"
-        description="Contemporary ethnic wear designed for boutiques, retailers and modern wardrobes."
+        description="Handcrafted lehengas and festive sarees designed for boutiques, retailers and celebration wardrobes."
       />
 
-      {/* Grid */}
-      <section className="py-16 md:py-24 px-6 sm:px-10 max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14 md:gap-y-18">
-          {collectionsData.map((item) => (
-            <Link
-              key={item.id}
-              href={`/collections/${item.slug}`}
-              className="group block"
-            >
-              <div className="relative w-full aspect-[4/5] overflow-hidden bg-[#ECEBE7] mb-4">
-                <Image
-                  src={item.coverImage}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-                />
-              </div>
-
-              <div className="flex items-baseline justify-between mb-1">
-                <h2 className="text-base font-medium text-[#171717] tracking-tight">
-                  {item.title}
-                </h2>
-                <span className="text-xs text-[#66635F] group-hover:text-[#171717] transition-colors">
-                  View →
-                </span>
-              </div>
-              <p className="text-xs text-[#66635F] font-light line-clamp-2">
-                {item.description}
-              </p>
-            </Link>
-          ))}
-        </div>
+      {/* Grid with Clean Category Filters */}
+      <section className="py-14 md:py-20 px-6 sm:px-10 lg:px-16 max-w-[1440px] mx-auto">
+        <CollectionsFilterGrid />
 
         {/* Wholesale Contact Link */}
-        <div className="mt-20 pt-10 border-t border-[#E4E2DD] flex flex-col sm:flex-row items-baseline justify-between gap-4">
+        <div className="mt-16 pt-8 border-t border-[#E4E2DD] flex flex-col sm:flex-row items-baseline justify-between gap-4">
           <div>
             <p className="text-sm font-medium text-[#171717]">
               Interested in line sheets and trade pricing?
             </p>
-            <p className="text-xs text-[#66635F] mt-0.5">
+            <p className="text-xs text-[#66635F] mt-0.5 font-light">
               Speak directly with our team for seasonal catalogues.
             </p>
           </div>
@@ -71,9 +39,12 @@ export default function CollectionsPage() {
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs uppercase tracking-[0.15em] font-medium text-[#171717] hover:opacity-70 transition-opacity"
+            className="group inline-flex items-center space-x-1 text-xs uppercase tracking-[0.15em] font-medium text-[#171717] hover:opacity-70 transition-opacity"
           >
-            Request Catalogue on WhatsApp →
+            <span>Request Catalogue on WhatsApp</span>
+            <span className="inline-block transition-transform duration-250 ease-out group-hover:translate-x-1">
+              →
+            </span>
           </a>
         </div>
       </section>

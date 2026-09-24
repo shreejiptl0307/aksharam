@@ -14,13 +14,13 @@ export default function AboutSection() {
         {/* Right Paragraphs & Link */}
         <div className="lg:col-span-8 space-y-6 max-w-2xl">
           <p className="text-base sm:text-lg text-[#171717] font-light leading-relaxed">
-            Aksharam Ethnic LLP creates contemporary ethnic fashion for retailers,
-            boutiques and fashion businesses.
+            Aksharam Ethnic LLP crafts fine bridal lehengas, festive lehengas
+            and handcrafted sarees for boutiques, retailers and wholesale partners.
           </p>
           <p className="text-base text-[#66635F] font-light leading-relaxed">
-            Our collections span lehengas, sarees, dresses, bridesmaid styles,
-            co-ords and modern ethnic wear. We focus on thoughtful design,
-            quality and long-term relationships with our customers.
+            Our collections focus on heritage mirrorwork (shisha), intricate zari embroidery,
+            and contemporary drape aesthetics. Every piece reflects meticulous Surat
+            craftsmanship and dedicated B2B trade partnerships.
           </p>
           <div className="pt-2">
             <Link

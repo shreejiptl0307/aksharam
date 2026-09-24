@@ -19,9 +19,9 @@ export default function WholesalePage() {
       />
 
       {/* Main Content */}
-      <section className="py-16 md:py-24 px-6 sm:px-10 max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div className="lg:col-span-6 space-y-6">
+      <section className="py-14 md:py-20 px-6 sm:px-10 lg:px-16 max-w-[1440px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          <div className="lg:col-span-6 space-y-5">
             <h2 className="text-2xl sm:text-3xl font-light text-[#171717] tracking-tight">
               B2B Partnerships & Supply
             </h2>
@@ -38,7 +38,7 @@ export default function WholesalePage() {
               </p>
             </div>
 
-            <div className="pt-4">
+            <div className="pt-3">
               <a
                 href={getWhatsAppUrl(
                   "Hello Aksharam, I'm interested in your wholesale collections. Please share more information about your latest catalogue and wholesale requirements."
@@ -52,32 +52,32 @@ export default function WholesalePage() {
             </div>
           </div>
 
-          {/* Simple Clean Overview Points */}
-          <div className="lg:col-span-6 bg-[#F3F2EE] p-8 md:p-12 space-y-6">
-            <h3 className="text-lg font-medium text-[#171717] tracking-tight">
+          {/* Clean Overview Box */}
+          <div className="lg:col-span-6 bg-[#F3F2EE] p-8 md:p-10 space-y-5">
+            <h3 className="text-base font-medium text-[#171717] tracking-tight">
               Wholesale Capabilities
             </h3>
-            <ul className="space-y-4 text-sm text-[#66635F] font-light divide-y divide-[#E4E2DD]">
-              <li className="pt-3">
-                <span className="font-medium text-[#171717] block mb-1">
+            <ul className="space-y-3.5 text-sm text-[#66635F] font-light divide-y divide-[#E4E2DD]">
+              <li className="pt-2.5">
+                <span className="font-medium text-[#171717] block mb-0.5">
                   Wholesale Collections
                 </span>
-                Seasonal line sheets spanning lehengas, sarees, dresses, bridesmaid edits and co-ords.
+                Seasonal line sheets spanning bridal lehengas, festive lehengas and handcrafted sarees.
               </li>
-              <li className="pt-3">
-                <span className="font-medium text-[#171717] block mb-1">
+              <li className="pt-2.5">
+                <span className="font-medium text-[#171717] block mb-0.5">
                   Fashion-Forward Designs
                 </span>
                 Contemporary silhouettes designed to meet current market trends.
               </li>
-              <li className="pt-3">
-                <span className="font-medium text-[#171717] block mb-1">
+              <li className="pt-2.5">
+                <span className="font-medium text-[#171717] block mb-0.5">
                   Customisation
                 </span>
                 Explore custom colorways, size runs and volume adaptations for your store.
               </li>
-              <li className="pt-3">
-                <span className="font-medium text-[#171717] block mb-1">
+              <li className="pt-2.5">
+                <span className="font-medium text-[#171717] block mb-0.5">
                   Direct Trade Support
                 </span>
                 Direct communication with our team in Surat for orders and catalogue requests.

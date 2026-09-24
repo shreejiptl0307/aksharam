@@ -7,14 +7,14 @@ export default function WhatsAppFloatingButton() {
   return (
     <aside
       aria-label="WhatsApp trade contact"
-      className="fixed bottom-5 right-5 z-40"
+      className="fixed bottom-5 right-5 z-40 animate-whatsapp-entrance"
     >
       <a
         href={getWhatsAppUrl()}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Enquire on WhatsApp"
-        className="flex items-center justify-center w-11 h-11 bg-[#171717] text-[#FAFAF8] rounded-full shadow-sm hover:opacity-80 transition-opacity"
+        className="flex items-center justify-center w-11 h-11 bg-[#171717] text-[#FAFAF8] rounded-full shadow-xs hover:bg-[#262626] transition-colors duration-250 cursor-pointer"
       >
         <MessageCircle className="w-4 h-4 stroke-[1.75]" />
       </a>

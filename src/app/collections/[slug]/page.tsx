@@ -55,8 +55,8 @@ export default async function CollectionDetailPage({ params }: Props) {
         description={collection.description}
       />
 
-      <section className="py-16 md:py-24 px-6 sm:px-10 max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <section className="py-14 md:py-20 px-6 sm:px-10 lg:px-16 max-w-[1440px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           {/* Main Large Photography */}
           <div className="lg:col-span-7">
             <div className="relative w-full aspect-[4/5] overflow-hidden bg-[#ECEBE7]">
@@ -65,14 +65,14 @@ export default async function CollectionDetailPage({ params }: Props) {
                 alt={collection.title}
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 58vw"
+                className="object-cover object-top transition-transform duration-500 ease-out hover:scale-[1.01]"
               />
             </div>
           </div>
 
           {/* Details Column */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-10">
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-8 lg:pl-2">
             <div className="space-y-6">
               <h2 className="text-xl sm:text-2xl font-light text-[#171717] tracking-tight">
                 Collection Overview
@@ -105,7 +105,7 @@ export default async function CollectionDetailPage({ params }: Props) {
             </div>
 
             {/* Wholesale CTA */}
-            <div className="pt-6 border-t border-[#E4E2DD] space-y-4">
+            <div className="pt-6 border-t border-[#E4E2DD] space-y-3">
               <a
                 href={getWhatsAppUrl(
                   `Hello Aksharam, I'm interested in wholesale information and line sheets for ${collection.title}.`
@@ -119,7 +119,7 @@ export default async function CollectionDetailPage({ params }: Props) {
 
               <Link
                 href="/collections"
-                className="block text-center text-xs uppercase tracking-[0.15em] text-[#66635F] hover:text-[#171717] transition-colors py-2"
+                className="block text-center text-xs uppercase tracking-[0.15em] text-[#66635F] hover:text-[#171717] transition-colors py-1.5"
               >
                 ← Back to all collections
               </Link>
@@ -128,7 +128,7 @@ export default async function CollectionDetailPage({ params }: Props) {
         </div>
 
         {/* Collection Nav */}
-        <div className="mt-20 pt-8 border-t border-[#E4E2DD] flex items-center justify-between text-xs uppercase tracking-[0.15em] text-[#66635F]">
+        <div className="mt-16 pt-6 border-t border-[#E4E2DD] flex items-center justify-between text-xs uppercase tracking-[0.15em] text-[#66635F]">
           <Link
             href={`/collections/${prevCollection.slug}`}
             className="hover:text-[#171717] transition-colors"

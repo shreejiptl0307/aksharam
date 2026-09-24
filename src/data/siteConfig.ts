@@ -1,13 +1,21 @@
 export const siteConfig = {
   name: "AKSHARAM",
   companyName: "AKSHARAM ETHNIC LLP",
-  tagline: "Contemporary Indian Ethnic Wear",
-  subtagline: "Crafted for boutiques, retailers and modern wardrobes.",
-  statementHeadline: "Indian craftsmanship, shaped for contemporary fashion.",
+  tagline: "Handcrafted Lehengas & Sarees",
+  subtagline: "Designer lehengas and handcrafted sarees for boutiques, retailers and modern wardrobes.",
+  statementHeadline: "Indian craftsmanship, shaped for contemporary celebrations.",
   statementBody:
-    "Aksharam Ethnic LLP creates ethnic collections for retailers and boutiques, combining thoughtful detailing, quality and modern design.",
+    "Aksharam Ethnic LLP designs and manufactures handcrafted lehengas and festive sarees for retailers and boutiques, combining thoughtful detailing, authentic craftsmanship and reliable supply.",
   url: "https://aksharam.co",
   canonicalUrl: "https://aksharam.co",
+  brandRed: "#DB2D1C",
+  logo: {
+    src: "/brand/aksharam-logo-transparent.png",
+    masterSrc: "/brand/aksharam-logo-master.png",
+    alt: "Aksharam Ethnic LLP Logo",
+    width: 962,
+    height: 259,
+  },
   phone: "+91 78018 23811",
   phoneRaw: "917801823811",
   email: "aksharamethnic@gmail.com",
@@ -27,9 +35,14 @@ export const siteConfig = {
   whatsapp: {
     number: "917801823811",
     defaultMessage:
-      "Hello Aksharam, I'm interested in your wholesale collections. Please share more information about your latest catalogue and wholesale requirements.",
+      "Hello Aksharam, I'm interested in your lehenga and saree collections. Please share more information about your latest catalogue and wholesale requirements.",
     customisationMessage:
-      "Hello Aksharam, I would like to discuss collection and customisation requirements for my boutique.",
+      "Hello Aksharam, I would like to discuss lehenga and saree customisation requirements for my boutique.",
+  },
+  instagram: {
+    handle: "@krishree_",
+    username: "krishree_",
+    url: "https://www.instagram.com/krishree_/",
   },
   navLinks: [
     { label: "Collections", href: "/collections" },

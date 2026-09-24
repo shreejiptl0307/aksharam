@@ -1,12 +1,25 @@
+export interface CollectionImage {
+  src: string;
+  label: string;
+  alt: string;
+}
+
 export interface CollectionItem {
   id: string;
   slug: string;
   number: string;
+  category: "lehengas" | "sarees";
   title: string;
   coverImage: string;
+  hoverImage: string;
+  alt: string;
+  hoverAlt?: string;
   description: string;
   fabrics?: string;
   silhouettes?: string;
+  gallery: CollectionImage[];
+  craftsmanshipNote?: string;
+  customisationNote?: string;
 }
 
 export const collectionsData: CollectionItem[] = [
@@ -14,61 +27,199 @@ export const collectionsData: CollectionItem[] = [
     id: "01",
     slug: "shisha-lehengas",
     number: "01",
+    category: "lehengas",
     title: "Shisha Lehengas",
-    coverImage: "/images/collections/collection-lehenga.svg",
-    description: "Detailed hand-locked mirror embroidery across fluid celebratory silhouettes.",
+    coverImage: "/images/collections/collection-lehenga.jpg",
+    hoverImage: "/images/collections/featured-shisha.jpg",
+    alt: "Model wearing embroidered purple Shisha mirrorwork bridal lehenga",
+    hoverAlt: "Detail of embellished Shisha mirrorwork lehenga ensemble",
+    description: "Detailed hand-locked mirror embroidery across fluid celebratory lehenga silhouettes.",
     fabrics: "Georgette, Raw Silk, Organza",
-    silhouettes: "Flared lehenga, A-line cut, Tiered skirt",
+    silhouettes: "Flared lehenga, A-line cut, Tiered skirt with structured blouse and dupatta",
+    craftsmanshipNote: "Finished with hand-locked shisha mirror embroidery and fine zardozi border detailing.",
+    customisationNote: "Custom colorways and sizing specifications available for trade and boutique orders.",
+    gallery: [
+      {
+        src: "/images/collections/collection-lehenga.jpg",
+        label: "Front",
+        alt: "Front view of Shisha lehenga ensemble in deep purple",
+      },
+      {
+        src: "/images/craft/craft-detail-01.jpg",
+        label: "Detail",
+        alt: "Macro craftsmanship detail of mirrorwork and embroidery",
+      },
+      {
+        src: "/images/collections/featured-shisha.jpg",
+        label: "Alternate",
+        alt: "Alternate angle of festive embellished lehenga silhouette",
+      },
+    ],
   },
   {
     id: "02",
-    slug: "sarees",
+    slug: "handcrafted-sarees",
     number: "02",
-    title: "Sarees",
-    coverImage: "/images/collections/collection-saree.svg",
-    description: "Draped opulence with fine border detailing and modern textures.",
-    fabrics: "Tissue Silk, Crêpe, Chiffon",
-    silhouettes: "Classic drape, Concept pre-stitched",
+    category: "sarees",
+    title: "Handcrafted Sarees",
+    coverImage: "/images/collections/collection-saree.jpg",
+    hoverImage: "/images/lookbook/lookbook-03.jpg",
+    alt: "Model draped in handcrafted saree with contrast velvet blouse and border",
+    hoverAlt: "Alternate drape in mint green festive tissue silk saree",
+    description: "Draped opulence with fine border detailing, artisanal pallu finishes and modern textures.",
+    fabrics: "Tissue Silk, Pure Crêpe, Chiffon",
+    silhouettes: "Classic 6-yard drape, Concept pre-stitched saree",
+    craftsmanshipNote: "Woven borders and delicate surface textures tailored for celebratory occasions.",
+    customisationNote: "Boutique line sheets and bespoke drape adaptations available on inquiry.",
+    gallery: [
+      {
+        src: "/images/collections/collection-saree.jpg",
+        label: "Front",
+        alt: "Draped handcrafted saree silhouette",
+      },
+      {
+        src: "/images/lookbook/lookbook-03.jpg",
+        label: "Alternate",
+        alt: "Mint green festive drape look",
+      },
+      {
+        src: "/images/about/about-atelier.jpg",
+        label: "Atelier",
+        alt: "Atelier finishing and drape preparation",
+      },
+    ],
   },
   {
     id: "03",
-    slug: "dresses",
+    slug: "bridal-lehengas",
     number: "03",
-    title: "Dresses",
-    coverImage: "/images/collections/collection-dresses.svg",
-    description: "Contemporary occasion gowns and tiered fusion silhouettes.",
-    fabrics: "Pleated Georgette, Lurex Chiffon",
-    silhouettes: "Empire gown, Tiered maxi",
+    category: "lehengas",
+    title: "Bridal Lehengas",
+    coverImage: "/images/lookbook/lookbook-01.jpg",
+    hoverImage: "/images/lookbook/lookbook-05.jpg",
+    alt: "Model wearing deep purple crush silk bridal lehenga with heavy zardozi",
+    hoverAlt: "Dusty blue embroidered bridal festive silhouette",
+    description: "Grand bridal lehengas featuring traditional zardozi, zari threadwork and voluminous flares.",
+    fabrics: "Raw Silk, Heavy Georgette, Crush Silk",
+    silhouettes: "Multi-panel flared lehenga, Double dupatta styling",
+    craftsmanshipNote: "Intricate metallic thread embroidery and hand-set embellishments.",
+    customisationNote: "Bespoke bridal color adjustments and boutique size runs available.",
+    gallery: [
+      {
+        src: "/images/lookbook/lookbook-01.jpg",
+        label: "Front",
+        alt: "Deep purple crush silk bridal lehenga",
+      },
+      {
+        src: "/images/lookbook/lookbook-05.jpg",
+        label: "Alternate",
+        alt: "Dusty blue embroidered bridal lehenga ensemble",
+      },
+      {
+        src: "/images/craft/craft-detail-01.jpg",
+        label: "Detail",
+        alt: "Zardozi and border detail",
+      },
+    ],
   },
   {
     id: "04",
-    slug: "bridesmaid",
+    slug: "tissue-sarees",
     number: "04",
-    title: "Bridesmaid",
-    coverImage: "/images/collections/collection-bridesmaid.svg",
-    description: "Curated palettes and coordinated festive ensembles.",
-    fabrics: "Silk Chanderi, Georgette",
-    silhouettes: "Sharara set, Anarkali, Crop top & skirt",
+    category: "sarees",
+    title: "Tissue & Silk Sarees",
+    coverImage: "/images/lookbook/lookbook-03.jpg",
+    hoverImage: "/images/lookbook/lookbook-06.jpg",
+    alt: "Model wearing mint green tissue silk saree",
+    hoverAlt: "Rust orange handcrafted festive tissue drape",
+    description: "Luminous tissue drapes and festive sarees with fine borders and contemporary drapes.",
+    fabrics: "Metallic Tissue, Chanderi Silk, Organza",
+    silhouettes: "Classic festive drape with handcrafted blouse",
+    craftsmanshipNote: "Fine hand-finished borders with delicate zari and resham motifs.",
+    customisationNote: "Wholesale catalogue packs available for retail boutiques.",
+    gallery: [
+      {
+        src: "/images/lookbook/lookbook-03.jpg",
+        label: "Front",
+        alt: "Mint green tissue silk saree",
+      },
+      {
+        src: "/images/lookbook/lookbook-06.jpg",
+        label: "Alternate",
+        alt: "Rust orange festive tissue drape",
+      },
+      {
+        src: "/images/craft/craft-detail-01.jpg",
+        label: "Detail",
+        alt: "Border detailing close-up",
+      },
+    ],
   },
   {
     id: "05",
-    slug: "coords",
+    slug: "bridesmaid-lehengas",
     number: "05",
-    title: "Co-ords",
-    coverImage: "/images/collections/collection-coords.svg",
-    description: "Elevated daily separates in breathable natural and silk-blend textiles.",
-    fabrics: "Linen-cotton blend, Modal Satin",
-    silhouettes: "Tunic with trousers, Kurta with culottes",
+    category: "lehengas",
+    title: "Bridesmaid Lehengas",
+    coverImage: "/images/collections/collection-bridesmaid.jpg",
+    hoverImage: "/images/lookbook/lookbook-04.jpg",
+    alt: "Model in lavender tissue bridesmaid lehenga set",
+    hoverAlt: "Mustard festive bridesmaid ensemble with delicate zari",
+    description: "Lightweight, celebratory lehengas in pastel and vibrant festive palettes.",
+    fabrics: "Silk Chanderi, Georgette, Organza",
+    silhouettes: "A-line lehenga skirt, Crop top blouse & dupatta",
+    craftsmanshipNote: "Harmonious festive tones with lightweight celebratory embroidery.",
+    customisationNote: "Group order coordination and boutique palette customisation available.",
+    gallery: [
+      {
+        src: "/images/collections/collection-bridesmaid.jpg",
+        label: "Front",
+        alt: "Lavender tissue celebratory bridesmaid lehenga",
+      },
+      {
+        src: "/images/lookbook/lookbook-04.jpg",
+        label: "Alternate",
+        alt: "Mustard festive bridesmaid lehenga look",
+      },
+      {
+        src: "/images/craft/craft-detail-01.jpg",
+        label: "Detail",
+        alt: "Textured embroidery detailing",
+      },
+    ],
   },
   {
     id: "06",
-    slug: "contemporary-ethnic",
+    slug: "celebration-lehengas",
     number: "06",
-    title: "Contemporary Ethnic",
-    coverImage: "/images/collections/collection-contemporary.svg",
-    description: "Structured capes, asymmetric kurtas, and modern silhouettes.",
-    fabrics: "Raw Silk, Heavy Georgette",
-    silhouettes: "Cape set, Asymmetric tunic",
+    category: "lehengas",
+    title: "Celebration Lehengas",
+    coverImage: "/images/lookbook/lookbook-02.jpg",
+    hoverImage: "/images/collections/collection-contemporary.jpg",
+    alt: "Model wearing sunlit yellow festive tissue lehenga with gold borders",
+    hoverAlt: "Contemporary celebratory lehenga silhouette",
+    description: "Sunlit occasion lehengas combining contemporary styling with traditional craftsmanship.",
+    fabrics: "Tissue Silk, Lurex Chiffon, Georgette",
+    silhouettes: "Tiered flared lehenga with hand-finished dupatta",
+    craftsmanshipNote: "Fluid multi-tiered panels designed for contemporary celebration movement.",
+    customisationNote: "Available in custom sizing runs for retail stockists.",
+    gallery: [
+      {
+        src: "/images/lookbook/lookbook-02.jpg",
+        label: "Front",
+        alt: "Sunlit yellow celebration lehenga",
+      },
+      {
+        src: "/images/collections/collection-contemporary.jpg",
+        label: "Alternate",
+        alt: "Contemporary celebration silhouette",
+      },
+      {
+        src: "/images/craft/craft-detail-01.jpg",
+        label: "Detail",
+        alt: "Zari and border detail",
+      },
+    ],
   },
 ];
 
@@ -76,49 +227,61 @@ export const craftPoints = [
   {
     num: "01",
     title: "Craftsmanship",
-    desc: "Thoughtful detailing and careful finishing across every collection.",
+    desc: "Thoughtful detailing and careful finishing across every lehenga and saree.",
   },
   {
     num: "02",
     title: "Quality",
-    desc: "A focus on material, construction and consistency.",
+    desc: "A focus on fabric selection, structure, drape and consistency.",
   },
   {
     num: "03",
     title: "Design",
-    desc: "Contemporary silhouettes informed by Indian fashion and craft.",
+    desc: "Contemporary silhouettes informed by authentic Indian bridal and festive fashion.",
   },
 ];
 
 export const lookbookImages = [
   {
     id: 1,
-    src: "/images/lookbook/lookbook-01.svg",
-    alt: "Shisha Lehenga - Look 01",
+    lookNumber: "LOOK 01",
+    src: "/images/lookbook/lookbook-01.jpg",
+    alt: "Model wearing deep purple crush silk bridal lehenga",
+    caption: "Deep Purple Crush Silk Bridal Lehenga with Zardozi Work",
   },
   {
     id: 2,
-    src: "/images/lookbook/lookbook-02.svg",
-    alt: "Heritage Saree - Look 02",
+    lookNumber: "LOOK 02",
+    src: "/images/lookbook/lookbook-02.jpg",
+    alt: "Model wearing sunlit yellow tissue lehenga set",
+    caption: "Sunlit Yellow Festive Tissue Silk Lehenga Set",
   },
   {
     id: 3,
-    src: "/images/lookbook/lookbook-03.svg",
-    alt: "Occasion Dress - Look 03",
+    lookNumber: "LOOK 03",
+    src: "/images/lookbook/lookbook-03.jpg",
+    alt: "Model draped in mint green handcrafted tissue saree",
+    caption: "Mint Green Handcrafted Tissue Silk Saree",
   },
   {
     id: 4,
-    src: "/images/lookbook/lookbook-04.svg",
-    alt: "Bridesmaid Set - Look 04",
+    lookNumber: "LOOK 04",
+    src: "/images/lookbook/lookbook-04.jpg",
+    alt: "Model wearing mustard festive bridesmaid lehenga",
+    caption: "Mustard Festive Bridesmaid Lehenga with Delicate Border",
   },
   {
     id: 5,
-    src: "/images/lookbook/lookbook-05.svg",
-    alt: "Everyday Co-ord - Look 05",
+    lookNumber: "LOOK 05",
+    src: "/images/lookbook/lookbook-05.jpg",
+    alt: "Model wearing dusty blue embroidered festive lehenga",
+    caption: "Dusty Blue Mirrorwork & Zardozi Lehenga Silhouette",
   },
   {
     id: 6,
-    src: "/images/lookbook/lookbook-06.svg",
-    alt: "Contemporary Ethnic - Look 06",
+    lookNumber: "LOOK 06",
+    src: "/images/lookbook/lookbook-06.jpg",
+    alt: "Model draped in rust orange tissue festive saree",
+    caption: "Rust Orange Handwoven Festive Tissue Saree",
   },
 ];

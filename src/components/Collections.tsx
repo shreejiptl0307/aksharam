@@ -1,54 +1,58 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { collectionsData } from "@/data/collections";
+import { collectionsData, CollectionItem } from "@/data/collections";
+import CollectionCard from "@/components/CollectionCard";
+import QuickViewModal from "@/components/QuickViewModal";
+import ScrollReveal from "@/components/ScrollReveal";
 
-export default function Collections() {
+interface CollectionsProps {
+  limit?: number;
+}
+
+export default function Collections({ limit = 3 }: CollectionsProps) {
+  const [selectedQuickView, setSelectedQuickView] = useState<CollectionItem | null>(null);
+  const items = limit ? collectionsData.slice(0, limit) : collectionsData;
+
   return (
-    <section id="collections" className="py-20 md:py-32 px-6 sm:px-10 max-w-[1400px] mx-auto">
+    <section id="collections" className="py-16 md:py-24 px-6 sm:px-10 lg:px-16 max-w-[1440px] mx-auto">
       {/* Header */}
-      <div className="flex items-baseline justify-between mb-10 md:mb-14 border-b border-[#E4E2DD] pb-4">
-        <h2 className="text-2xl sm:text-3xl font-light text-[#171717] tracking-tight">
-          Collections
-        </h2>
-        <Link
-          href="/collections"
-          className="text-xs uppercase tracking-[0.15em] text-[#66635F] hover:text-[#171717] transition-colors"
-        >
-          View all →
-        </Link>
-      </div>
-
-      {/* Clean Photography Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 md:gap-y-16">
-        {collectionsData.map((item) => (
+      <ScrollReveal>
+        <div className="flex items-baseline justify-between mb-8 md:mb-12 border-b border-[#E4E2DD] pb-4">
+          <h2 className="text-2xl sm:text-3xl font-light text-[#171717] tracking-tight">
+            Collections
+          </h2>
           <Link
-            key={item.id}
-            href={`/collections/${item.slug}`}
-            className="group block"
+            href="/collections"
+            className="group inline-flex items-center text-xs uppercase tracking-[0.15em] text-[#66635F] hover:text-[#171717] transition-colors"
           >
-            {/* Image Container (0px radius, no cards, no borders) */}
-            <div className="relative w-full aspect-[4/5] overflow-hidden bg-[#ECEBE7] mb-4">
-              <Image
-                src={item.coverImage}
-                alt={item.title}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-              />
-            </div>
-
-            {/* Clean Title & Arrow */}
-            <div className="flex items-center justify-between text-sm">
-              <span className="font-normal text-[#171717] tracking-wide">
-                {item.title}
-              </span>
-              <span className="text-xs text-[#66635F] tracking-wider group-hover:text-[#171717] transition-colors">
-                View collection →
-              </span>
-            </div>
+            <span>View all</span>
+            <span className="inline-block transition-transform duration-250 ease-out group-hover:translate-x-1 ml-1">
+              →
+            </span>
           </Link>
+        </div>
+      </ScrollReveal>
+
+      {/* 3-Column Photography Grid with Staggered Entry */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 md:gap-y-12">
+        {items.map((item, index) => (
+          <ScrollReveal key={item.id} delay={index * 80}>
+            <CollectionCard
+              item={item}
+              onQuickView={(clickedItem) => setSelectedQuickView(clickedItem)}
+            />
+          </ScrollReveal>
         ))}
       </div>
+
+      {/* Minimal Editorial Quick View Modal */}
+      <QuickViewModal
+        item={selectedQuickView}
+        isOpen={selectedQuickView !== null}
+        onClose={() => setSelectedQuickView(null)}
+      />
     </section>
   );
 }

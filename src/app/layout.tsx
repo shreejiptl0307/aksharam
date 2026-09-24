@@ -54,7 +54,7 @@ export const metadata: Metadata = {
       "Aksharam Ethnic LLP creates contemporary Indian ethnic fashion for boutiques, retailers and wholesale partners.",
     images: [
       {
-        url: "/images/hero/hero-main.svg",
+        url: "/images/hero/hero-main.jpg",
         width: 1200,
         height: 630,
         alt: "Aksharam Ethnic LLP",
@@ -66,14 +66,15 @@ export const metadata: Metadata = {
     title: "Aksharam Ethnic LLP | Contemporary Indian Ethnic Wear",
     description:
       "Aksharam Ethnic LLP creates contemporary Indian ethnic fashion for boutiques, retailers and wholesale partners.",
-    images: ["/images/hero/hero-main.svg"],
+    images: ["/images/hero/hero-main.jpg"],
   },
   robots: {
     index: true,
     follow: true,
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.svg",
+    apple: "/brand/aksharam-logo-transparent.png",
   },
 };
 
@@ -89,7 +90,7 @@ export default function RootLayout({
     name: siteConfig.companyName,
     alternateName: "Aksharam",
     url: siteConfig.url,
-    logo: "https://aksharam.co/images/hero/hero-main.svg",
+    logo: "https://aksharam.co/brand/aksharam-logo-transparent.png",
     description: siteConfig.tagline,
     telephone: siteConfig.phone,
     email: siteConfig.email,

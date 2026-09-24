@@ -84,13 +84,13 @@ export default function CollectionCard({
       {/* Label Row with Direct Link to Collection */}
       <Link
         href={`/collections/${item.slug}`}
-        className="block group/link"
+        className="block group/link py-1"
       >
-        <div className="flex items-baseline justify-between mb-1">
-          <h2 className="text-base font-medium text-[#171717] tracking-tight group-hover/link:opacity-80 transition-opacity">
+        <div className="flex items-center justify-between mb-1 min-h-[36px]">
+          <h3 className="text-sm sm:text-base font-medium text-[#171717] tracking-tight group-hover/link:opacity-80 transition-opacity">
             {item.title}
-          </h2>
-          <span className="inline-flex items-center text-xs text-[#66635F] group-hover/link:text-[#171717] transition-colors duration-250">
+          </h3>
+          <span className="inline-flex items-center text-xs text-[#66635F] group-hover/link:text-[#171717] transition-colors duration-250 py-1">
             <span>{showDescription ? "View" : "View collection"}</span>
             <span className="inline-block transition-transform duration-250 ease-out group-hover/link:translate-x-1.5 ml-1">
               →
@@ -99,7 +99,7 @@ export default function CollectionCard({
         </div>
 
         {showDescription && item.description && (
-          <p className="text-xs text-[#66635F] font-light line-clamp-2">
+          <p className="text-xs text-[#66635F] font-light line-clamp-2 leading-relaxed">
             {item.description}
           </p>
         )}

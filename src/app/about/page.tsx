@@ -22,18 +22,21 @@ export default function AboutPage() {
       />
 
       {/* Main Narrative with Sticky Text on Desktop */}
-      <section className="py-14 md:py-20 px-6 sm:px-10 lg:px-16 max-w-[1440px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <section className="py-10 sm:py-14 md:py-20 px-5 sm:px-8 lg:px-16 max-w-[1440px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 items-start">
           {/* Sticky Left Column on Desktop */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
+          <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-4 sm:space-y-6">
             <ScrollReveal>
               <p className="text-xs uppercase tracking-[0.2em] text-[#66635F]">
                 Heritage & Atelier
               </p>
-              <h2 className="text-3xl sm:text-4xl font-light text-[#171717] tracking-tight leading-snug">
+              <h2
+                style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.375rem)" }}
+                className="font-light text-[#171717] tracking-tight leading-snug mt-1"
+              >
                 Indian craftsmanship, shaped for modern celebrations.
               </h2>
-              <div className="space-y-4 text-base text-[#66635F] font-light leading-relaxed pt-2">
+              <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-[#66635F] font-light leading-relaxed pt-2">
                 <p>
                   Based in Surat, Gujarat, {siteConfig.companyName} combines traditional
                   craftsmanship disciplines with contemporary styling to produce

@@ -23,7 +23,7 @@ export default function CollectionsFilterGrid() {
   return (
     <div>
       {/* Clean Minimal Text Filter Tabs */}
-      <div className="flex flex-wrap items-center gap-x-8 gap-y-3 mb-10 md:mb-14 border-b border-[#E4E2DD] pb-4">
+      <div className="flex flex-wrap items-center gap-x-6 sm:gap-x-8 gap-y-2 mb-8 sm:mb-10 md:mb-14 border-b border-[#E4E2DD] pb-2 sm:pb-3">
         {filterCategories.map((cat) => {
           const isActive = activeFilter === cat.id;
           return (
@@ -31,9 +31,9 @@ export default function CollectionsFilterGrid() {
               key={cat.id}
               type="button"
               onClick={() => setActiveFilter(cat.id)}
-              className={`text-xs uppercase tracking-[0.15em] transition-colors duration-250 cursor-pointer pb-1 ${
+              className={`min-h-[44px] inline-flex items-center text-xs uppercase tracking-[0.15em] transition-colors duration-250 cursor-pointer pb-0.5 ${
                 isActive
-                  ? "text-[#171717] font-medium border-b border-[#171717]"
+                  ? "text-[#171717] font-medium border-b-2 border-[#171717]"
                   : "text-[#66635F] hover:text-[#171717]"
               }`}
             >
@@ -44,7 +44,7 @@ export default function CollectionsFilterGrid() {
       </div>
 
       {/* Filtered Grid with Soft 300ms Crossfade */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 md:gap-y-14 transition-opacity duration-300">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-x-8 gap-y-8 sm:gap-y-10 md:gap-y-14 transition-opacity duration-300">
         {filteredItems.map((item) => (
           <div key={item.id} className="animate-in fade-in duration-300">
             <CollectionCard

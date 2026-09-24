@@ -54,36 +54,39 @@ export default function ExploreTheLook() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section className="py-16 md:py-24 px-6 sm:px-10 lg:px-16 max-w-[1440px] mx-auto border-t border-[#E4E2DD]">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-5 sm:px-8 lg:px-16 max-w-[1440px] mx-auto border-t border-[#E4E2DD]">
       {/* Header */}
       <ScrollReveal>
-        <div className="max-w-xl mb-10 md:mb-14">
-          <p className="text-xs uppercase tracking-[0.2em] text-[#66635F] mb-3">
+        <div className="max-w-xl mb-6 sm:mb-8 md:mb-12">
+          <p className="text-xs uppercase tracking-[0.2em] text-[#66635F] mb-2 sm:mb-3">
             <span className="text-[#DB2D1C] font-semibold mr-1.5">||</span>
             Explore the Look
           </p>
-          <h2 className="text-3xl sm:text-4xl font-light text-[#171717] tracking-tight">
+          <h2
+            style={{ fontSize: "clamp(1.5rem, 4vw, 2.25rem)" }}
+            className="font-light text-[#171717] tracking-tight leading-snug"
+          >
             Discover the details behind the design.
           </h2>
         </div>
       </ScrollReveal>
 
       {/* Main Composition */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-14 items-center">
         {/* Left Column (Desktop 7 cols): Portrait Photography with Interactive Hotspots */}
         <div className="lg:col-span-7">
           <ScrollReveal duration={800}>
-            <div className="relative w-full aspect-[3/4] sm:aspect-[4/5] overflow-hidden bg-[#ECEBE7]">
+            <div className="relative w-full aspect-[4/5] sm:aspect-[4/5] overflow-hidden bg-[#ECEBE7]">
               <Image
                 src="/images/hero/hero-main.jpg"
                 alt="Aksharam bridal lehenga exploration with interactive design details"
                 fill
-                sizes="(max-width: 1024px) 100vw, 58vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 58vw"
                 className="object-cover object-top"
               />
 
-              {/* Desktop Interactive Hotspot Markers */}
-              <div className="hidden sm:block">
+              {/* Desktop Interactive Hotspot Markers (Hidden on Mobile) */}
+              <div className="hidden md:block">
                 {hotspots.map((spot) => {
                   const isActive = activeHotspot.id === spot.id;
                   return (
@@ -101,7 +104,7 @@ export default function ExploreTheLook() {
                         }}
                         onMouseLeave={() => setIsHovered(false)}
                         aria-label={`Explore detail: ${spot.title}`}
-                        className="relative flex items-center justify-center w-7 h-7 group cursor-pointer focus:outline-hidden"
+                        className="relative flex items-center justify-center w-8 h-8 group cursor-pointer focus:outline-hidden"
                       >
                         {/* Outer Pulse Ring */}
                         <span
@@ -121,7 +124,7 @@ export default function ExploreTheLook() {
 
                       {/* Desktop Hover / Active Tooltip Badge */}
                       {isActive && (
-                        <div className="absolute left-9 top-1/2 -translate-y-1/2 z-20 w-56 bg-[#FAFAF8] p-3.5 border border-[#E4E2DD] shadow-xs text-left animate-in fade-in duration-200 pointer-events-none">
+                        <div className="absolute left-10 top-1/2 -translate-y-1/2 z-20 w-56 bg-[#FAFAF8] p-3.5 border border-[#E4E2DD] shadow-xs text-left animate-in fade-in duration-200 pointer-events-none">
                           <span className="text-[10px] uppercase tracking-widest text-[#66635F] block mb-1">
                             {spot.number} — {spot.label}
                           </span>
@@ -145,7 +148,7 @@ export default function ExploreTheLook() {
         <div className="lg:col-span-5 flex flex-col justify-between space-y-6 lg:pl-4">
           <ScrollReveal delay={120}>
             {/* Desktop Active Card Detail */}
-            <div className="hidden sm:block space-y-4">
+            <div className="hidden md:block space-y-4">
               <span className="text-xs uppercase tracking-[0.2em] text-[#66635F] block">
                 {activeHotspot.number} / 03 — {activeHotspot.label}
               </span>
@@ -158,7 +161,7 @@ export default function ExploreTheLook() {
               <div className="pt-2">
                 <Link
                   href={activeHotspot.link}
-                  className="group inline-flex items-center space-x-1.5 text-xs uppercase tracking-[0.15em] font-medium text-[#171717] hover:opacity-80 transition-opacity"
+                  className="group inline-flex items-center space-x-1.5 text-xs uppercase tracking-[0.15em] font-medium text-[#171717] hover:opacity-80 transition-opacity py-2 min-h-[44px]"
                 >
                   <span>View collection</span>
                   <span className="inline-block transition-transform duration-250 ease-out group-hover:translate-x-1.5">
@@ -168,8 +171,8 @@ export default function ExploreTheLook() {
               </div>
             </div>
 
-            {/* Mobile Selectable Rows */}
-            <div className="block sm:hidden space-y-2.5">
+            {/* Mobile Selectable Rows with 44px+ min touch targets */}
+            <div className="block md:hidden space-y-2.5">
               <p className="text-xs uppercase tracking-[0.15em] text-[#66635F] mb-3">
                 Select a detail to explore:
               </p>
@@ -180,23 +183,39 @@ export default function ExploreTheLook() {
                     key={spot.id}
                     type="button"
                     onClick={() => setActiveHotspot(spot)}
-                    className={`w-full text-left p-3.5 border transition-all duration-200 ${
+                    className={`w-full text-left p-4 border min-h-[52px] transition-all duration-200 cursor-pointer ${
                       isSelected
                         ? "bg-[#FAFAF8] border-[#171717]"
-                        : "bg-white/50 border-[#E4E2DD]"
+                        : "bg-white/40 border-[#E4E2DD]"
                     }`}
                   >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-medium text-[#171717]">
-                        {spot.number} — {spot.title}
-                      </span>
-                      <span className="text-[10px] uppercase tracking-wider text-[#66635F]">
-                        {spot.label}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-3">
+                        <span className="text-xs font-mono font-medium text-[#171717]">
+                          {spot.number}
+                        </span>
+                        <span className="text-sm font-medium text-[#171717]">
+                          {spot.title}
+                        </span>
+                      </div>
+                      <span className="text-xs text-[#66635F] font-light">
+                        {isSelected ? "−" : "→"}
                       </span>
                     </div>
-                    <p className="text-xs text-[#66635F] font-light leading-relaxed">
-                      {spot.description}
-                    </p>
+
+                    {isSelected && (
+                      <div className="pt-2.5 mt-2 border-t border-[#E4E2DD] animate-in fade-in duration-200">
+                        <p className="text-xs text-[#66635F] font-light leading-relaxed mb-3">
+                          {spot.description}
+                        </p>
+                        <Link
+                          href={spot.link}
+                          className="inline-flex items-center text-xs uppercase tracking-[0.12em] font-medium text-[#171717] py-1"
+                        >
+                          Explore style →
+                        </Link>
+                      </div>
+                    )}
                   </button>
                 );
               })}

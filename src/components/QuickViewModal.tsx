@@ -81,7 +81,7 @@ export default function QuickViewModal({
       className="fixed inset-0 z-50 bg-[#FAFAF8] overflow-y-auto flex flex-col justify-between animate-in fade-in duration-200"
     >
       {/* Top Header Bar */}
-      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between border-b border-[#E4E2DD]">
+      <div className="w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16 h-14 sm:h-16 md:h-20 flex items-center justify-between border-b border-[#E4E2DD] shrink-0">
         <div className="flex items-center space-x-2 text-xs uppercase tracking-[0.2em] font-medium text-[#171717]">
           <span className="text-[#DB2D1C] font-semibold">||</span>
           <span>AKSHARAM</span>
@@ -93,7 +93,7 @@ export default function QuickViewModal({
           type="button"
           onClick={onClose}
           aria-label="Close quick view"
-          className="group flex items-center space-x-1.5 text-xs uppercase tracking-[0.15em] font-medium text-[#171717] hover:opacity-60 transition-opacity p-2 cursor-pointer"
+          className="group flex items-center space-x-1.5 min-h-[44px] min-w-[44px] justify-end text-xs uppercase tracking-[0.15em] font-medium text-[#171717] hover:opacity-60 transition-opacity cursor-pointer"
         >
           <span>Close</span>
           <X className="w-4 h-4 stroke-[1.5]" />
@@ -101,14 +101,14 @@ export default function QuickViewModal({
       </div>
 
       {/* Main Editorial Body */}
-      <div className="flex-grow max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-16 py-8 md:py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div className="flex-grow max-w-[1440px] w-full mx-auto px-5 sm:px-8 lg:px-16 py-6 sm:py-8 md:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-14 items-start">
           {/* Left Column: Large Image + Text Photo Tabs */}
-          <div className="lg:col-span-7 space-y-4">
+          <div className="lg:col-span-7 space-y-3 sm:space-y-4">
             {/* Click to Zoom Image Container */}
             <div
               onClick={() => setIsZoomed(!isZoomed)}
-              className="relative w-full aspect-[3/4] sm:aspect-[4/5] overflow-hidden bg-[#ECEBE7] cursor-zoom-in group select-none"
+              className="relative w-full aspect-[4/5] sm:aspect-[4/5] overflow-hidden bg-[#ECEBE7] cursor-zoom-in group select-none"
               title="Click to zoom photograph"
             >
               <Image
@@ -116,19 +116,19 @@ export default function QuickViewModal({
                 alt={currentImage.alt}
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 58vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 58vw"
                 className={`object-cover object-top transition-all duration-500 ease-out ${
                   isZoomed ? "scale-125 object-center" : "scale-100 group-hover:scale-[1.015]"
                 }`}
               />
-              <div className="absolute top-3 right-3 p-1.5 bg-black/50 text-white backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              <div className="hidden sm:block absolute top-3 right-3 p-1.5 bg-black/50 text-white backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 <Maximize2 className="w-3.5 h-3.5 stroke-[1.5]" />
               </div>
             </div>
 
-            {/* Subtle Minimal Text Controls (01 Front, 02 Detail, 03 Alternate) */}
+            {/* Angle Tabs with min 44px tap target (01 Front, 02 Detail, 03 Alternate) */}
             {item.gallery.length > 1 && (
-              <div className="flex items-center space-x-6 pt-2 text-xs uppercase tracking-[0.15em]">
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-1 text-xs uppercase tracking-[0.15em]">
                 {item.gallery.map((img, idx) => {
                   const isActive = activeImageIndex === idx;
                   return (
@@ -139,9 +139,9 @@ export default function QuickViewModal({
                         setActiveImageIndex(idx);
                         setIsZoomed(false);
                       }}
-                      className={`transition-colors duration-250 pb-1 cursor-pointer ${
+                      className={`min-h-[44px] inline-flex items-center transition-colors duration-250 cursor-pointer ${
                         isActive
-                          ? "text-[#171717] font-medium border-b border-[#171717]"
+                          ? "text-[#171717] font-medium border-b-2 border-[#171717]"
                           : "text-[#66635F] hover:text-[#171717]"
                       }`}
                     >
@@ -154,20 +154,23 @@ export default function QuickViewModal({
           </div>
 
           {/* Right Column: Style Narrative & Accordions */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-8 lg:pl-2">
-            <div className="space-y-6">
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-6 sm:space-y-8 lg:pl-2">
+            <div className="space-y-5 sm:space-y-6">
               {/* Header Label & Title */}
               <div>
-                <span className="text-xs uppercase tracking-[0.2em] text-[#66635F] block mb-2">
+                <span className="text-xs uppercase tracking-[0.2em] text-[#66635F] block mb-1.5 sm:mb-2">
                   Collection {item.number}
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-light text-[#171717] tracking-tight leading-tight">
+                <h2
+                  style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.25rem)" }}
+                  className="font-light text-[#171717] tracking-tight leading-tight"
+                >
                   {item.title}
                 </h2>
               </div>
 
               {/* Short Verified Description */}
-              <p className="text-base text-[#66635F] font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-[#66635F] font-light leading-relaxed">
                 {item.description}
               </p>
 
@@ -178,7 +181,7 @@ export default function QuickViewModal({
                   <button
                     type="button"
                     onClick={() => toggleAccordion("piece")}
-                    className="w-full py-4 flex items-center justify-between text-left font-normal text-[#171717] hover:opacity-75 transition-opacity cursor-pointer"
+                    className="w-full min-h-[48px] py-3.5 flex items-center justify-between text-left font-normal text-[#171717] hover:opacity-75 transition-opacity cursor-pointer"
                   >
                     <span>The Piece</span>
                     {openSection === "piece" ? (
@@ -211,7 +214,7 @@ export default function QuickViewModal({
                     <button
                       type="button"
                       onClick={() => toggleAccordion("details")}
-                      className="w-full py-4 flex items-center justify-between text-left font-normal text-[#171717] hover:opacity-75 transition-opacity cursor-pointer"
+                      className="w-full min-h-[48px] py-3.5 flex items-center justify-between text-left font-normal text-[#171717] hover:opacity-75 transition-opacity cursor-pointer"
                     >
                       <span>Details & Craft</span>
                       {openSection === "details" ? (
@@ -234,7 +237,7 @@ export default function QuickViewModal({
                     <button
                       type="button"
                       onClick={() => toggleAccordion("customisation")}
-                      className="w-full py-4 flex items-center justify-between text-left font-normal text-[#171717] hover:opacity-75 transition-opacity cursor-pointer"
+                      className="w-full min-h-[48px] py-3.5 flex items-center justify-between text-left font-normal text-[#171717] hover:opacity-75 transition-opacity cursor-pointer"
                     >
                       <span>Customisation & Supply</span>
                       {openSection === "customisation" ? (
@@ -253,13 +256,13 @@ export default function QuickViewModal({
               </div>
             </div>
 
-            {/* Wholesale Enquiry Action */}
-            <div className="pt-6 border-t border-[#E4E2DD] space-y-3">
+            {/* Wholesale Enquiry Action: Full width, min 48px height */}
+            <div className="pt-5 sm:pt-6 border-t border-[#E4E2DD] space-y-3">
               <a
                 href={getWhatsAppUrl(whatsappMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center space-x-2 w-full py-3.5 text-center bg-[#171717] text-[#FAFAF8] text-xs uppercase tracking-[0.15em] font-medium rounded-[2px] hover:bg-[#262626] transition-colors duration-250 cursor-pointer"
+                className="group flex items-center justify-center space-x-2 w-full min-h-[48px] py-3.5 text-center bg-[#171717] text-[#FAFAF8] text-xs uppercase tracking-[0.15em] font-medium rounded-[2px] hover:bg-[#262626] transition-colors duration-250 cursor-pointer"
               >
                 <span>Enquire About This Style</span>
                 <span className="inline-block transition-transform duration-250 ease-out group-hover:translate-x-1">
@@ -268,11 +271,11 @@ export default function QuickViewModal({
               </a>
 
               <div className="flex items-center justify-between text-xs text-[#66635F] pt-1">
-                <span>Wholesale & Boutique Orders</span>
+                <span>Wholesale & Trade Orders</span>
                 <Link
                   href={`/collections/${item.slug}`}
                   onClick={onClose}
-                  className="hover:text-[#171717] underline underline-offset-4 transition-colors"
+                  className="hover:text-[#171717] underline underline-offset-4 transition-colors py-1"
                 >
                   View full collection →
                 </Link>

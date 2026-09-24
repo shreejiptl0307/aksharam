@@ -105,7 +105,7 @@ export default function ImageViewerModal({
       onTouchEnd={handleTouchEnd}
     >
       {/* Top Bar: Subtle Branding & Counter on Left, Close on Right */}
-      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between border-b border-[#E4E2DD]">
+      <div className="w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16 h-14 sm:h-16 md:h-20 flex items-center justify-between border-b border-[#E4E2DD] shrink-0">
         <div className="flex items-center space-x-2 text-xs uppercase tracking-[0.2em] font-medium text-[#171717]">
           <span className="text-[#DB2D1C] font-semibold">||</span>
           <span>AKSHARAM</span>
@@ -117,7 +117,7 @@ export default function ImageViewerModal({
           type="button"
           onClick={onClose}
           aria-label="Close image viewer"
-          className="flex items-center space-x-2 text-xs uppercase tracking-[0.15em] font-medium text-[#171717] hover:opacity-60 transition-opacity p-2"
+          className="flex items-center space-x-1.5 min-h-[44px] min-w-[44px] justify-end text-xs uppercase tracking-[0.15em] font-medium text-[#171717] hover:opacity-60 transition-opacity cursor-pointer"
         >
           <span>Close</span>
           <X className="w-4 h-4 stroke-[1.5]" />
@@ -125,25 +125,25 @@ export default function ImageViewerModal({
       </div>
 
       {/* Main Image Area with Previous/Next Controls */}
-      <div className="relative flex-grow flex items-center justify-center px-4 sm:px-12 md:px-20 py-4 max-w-[1440px] w-full mx-auto">
+      <div className="relative flex-grow flex items-center justify-center px-4 sm:px-12 md:px-20 py-2 sm:py-4 max-w-[1440px] w-full mx-auto overflow-hidden">
         {/* Previous Button (Desktop) */}
         <button
           type="button"
           onClick={handlePrev}
           aria-label="Previous photograph"
-          className="hidden sm:flex absolute left-6 lg:left-10 z-10 w-10 h-10 items-center justify-center text-[#171717] hover:opacity-60 transition-opacity"
+          className="hidden sm:flex absolute left-4 lg:left-8 z-10 w-11 h-11 items-center justify-center text-[#171717] hover:opacity-60 transition-opacity cursor-pointer"
         >
           <ChevronLeft className="w-6 h-6 stroke-[1.5]" />
         </button>
 
         {/* Large Clean Photograph Container */}
-        <div className="relative w-full max-w-4xl h-[65vh] sm:h-[72vh] md:h-[76vh] flex items-center justify-center">
+        <div className="relative w-full max-w-4xl h-[60vh] sm:h-[70vh] md:h-[75vh] flex items-center justify-center">
           <Image
             src={currentImage.src}
             alt={currentImage.alt}
             fill
             priority
-            sizes="(max-width: 1024px) 100vw, 1200px"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1200px"
             className="object-contain transition-opacity duration-300 ease-out"
           />
         </div>
@@ -153,25 +153,25 @@ export default function ImageViewerModal({
           type="button"
           onClick={handleNext}
           aria-label="Next photograph"
-          className="hidden sm:flex absolute right-6 lg:right-10 z-10 w-10 h-10 items-center justify-center text-[#171717] hover:opacity-60 transition-opacity"
+          className="hidden sm:flex absolute right-4 lg:right-8 z-10 w-11 h-11 items-center justify-center text-[#171717] hover:opacity-60 transition-opacity cursor-pointer"
         >
           <ChevronRight className="w-6 h-6 stroke-[1.5]" />
         </button>
       </div>
 
       {/* Bottom Bar: Mobile Navigation Arrows + Optional Caption */}
-      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 h-14 md:h-16 flex items-center justify-between border-t border-[#E4E2DD] text-xs text-[#66635F]">
-        <p className="font-light truncate max-w-md">
+      <div className="w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16 h-14 sm:h-16 flex items-center justify-between border-t border-[#E4E2DD] text-xs text-[#66635F] shrink-0">
+        <p className="font-light truncate max-w-xs sm:max-w-md">
           {currentImage.caption || currentImage.alt}
         </p>
 
-        {/* Mobile Next / Prev Chevrons */}
-        <div className="flex sm:hidden items-center space-x-6 text-[#171717]">
+        {/* Mobile Next / Prev Controls with 44px min tap targets */}
+        <div className="flex sm:hidden items-center space-x-3 text-[#171717]">
           <button
             type="button"
             onClick={handlePrev}
             aria-label="Previous photograph"
-            className="p-1 hover:opacity-60 transition-opacity"
+            className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity"
           >
             <ChevronLeft className="w-5 h-5 stroke-[1.5]" />
           </button>
@@ -182,7 +182,7 @@ export default function ImageViewerModal({
             type="button"
             onClick={handleNext}
             aria-label="Next photograph"
-            className="p-1 hover:opacity-60 transition-opacity"
+            className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity"
           >
             <ChevronRight className="w-5 h-5 stroke-[1.5]" />
           </button>

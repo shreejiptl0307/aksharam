@@ -19,13 +19,16 @@ export default function WholesalePage() {
       />
 
       {/* Main Content */}
-      <section className="py-14 md:py-20 px-6 sm:px-10 lg:px-16 max-w-[1440px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          <div className="lg:col-span-6 space-y-5">
-            <h2 className="text-2xl sm:text-3xl font-light text-[#171717] tracking-tight">
+      <section className="py-10 sm:py-14 md:py-20 px-5 sm:px-8 lg:px-16 max-w-[1440px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-start">
+          <div className="lg:col-span-6 space-y-4 sm:space-y-5">
+            <h2
+              style={{ fontSize: "clamp(1.375rem, 3.5vw, 2rem)" }}
+              className="font-light text-[#171717] tracking-tight leading-tight"
+            >
               B2B Partnerships & Supply
             </h2>
-            <div className="space-y-4 text-base text-[#66635F] font-light leading-relaxed">
+            <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-[#66635F] font-light leading-relaxed">
               <p>
                 Aksharam Ethnic LLP partners with multi-designer boutiques,
                 ethnic-wear retailers, independent stores and fashion businesses
@@ -38,14 +41,14 @@ export default function WholesalePage() {
               </p>
             </div>
 
-            <div className="pt-3">
+            <div className="pt-2 sm:pt-3">
               <a
                 href={getWhatsAppUrl(
                   "Hello Aksharam, I'm interested in your wholesale collections. Please share more information about your latest catalogue and wholesale requirements."
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-7 py-3.5 bg-[#171717] text-[#FAFAF8] text-xs uppercase tracking-[0.15em] font-medium rounded-[2px] hover:bg-black transition-colors"
+                className="flex sm:inline-flex items-center justify-center min-h-[48px] px-6 sm:px-7 py-3.5 bg-[#171717] text-[#FAFAF8] text-xs uppercase tracking-[0.15em] font-medium rounded-[2px] hover:bg-black transition-colors text-center"
               >
                 Start a Wholesale Conversation →
               </a>

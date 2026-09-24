@@ -1,26 +1,112 @@
 @import "tailwindcss";
 
+@theme {
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-manrope), "Manrope", system-ui, -apple-system, sans-serif;
+
+  --color-ivory: #F7F3EC;
+  --color-cream: #EFE7DA;
+  --color-sand: #E7DECF;
+  --color-charcoal-dark: #181715;
+  --color-charcoal: #57524B;
+  --color-charcoal-light: #7E786E;
+  --color-burgundy: #702C36;
+  --color-burgundy-dark: #4A1B22;
+  --color-gold: #B79A67;
+  --color-gold-light: #D9C5A0;
+  --color-gold-dark: #8F7242;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F7F3EC;
+  --foreground: #181715;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  background-color: #F7F3EC;
+  color: #181715;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #F7F3EC;
+  color: #181715;
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+  selection-background-color: #702C36;
+  selection-color: #F7F3EC;
+}
+
+::selection {
+  background: #702C36;
+  color: #F7F3EC;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #EFE7DA;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #B79A67;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #702C36;
+}
+
+/* Editorial Typography utilities */
+.font-editorial {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Subtle Shimmer & Borders */
+.border-subtle {
+  border-color: rgba(24, 23, 21, 0.08);
+}
+
+.border-subtle-dark {
+  border-color: rgba(247, 243, 236, 0.12);
+}
+
+.border-gold-subtle {
+  border-color: rgba(183, 154, 103, 0.25);
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

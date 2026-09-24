@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import Craftsmanship from "@/components/Craftsmanship";
 import Sustainability from "@/components/Sustainability";
 import ContactCTA from "@/components/ContactCTA";
-import { siteConfig, getWhatsAppUrl } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
   title: "About Our Story & Craftsmanship | Aksharam Ethnic LLP",

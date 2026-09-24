@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpRight, MessageCircle, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { MessageCircle, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import ContactCTA from "@/components/ContactCTA";
 import { collectionsData } from "@/data/collections";

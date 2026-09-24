@@ -20,11 +20,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [pathname]);
-
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -32,9 +27,10 @@ export default function Navbar() {
     } else {
       document.body.style.overflow = "unset";
     }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [mobileMenuOpen]);
-
-  const isHome = pathname === "/";
 
   return (
     <>
@@ -45,10 +41,11 @@ export default function Navbar() {
             : "bg-transparent py-6 md:py-7"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo / Wordmark */}
           <Link
             href="/"
+            onClick={() => setMobileMenuOpen(false)}
             className="group flex flex-col tracking-[0.22em] text-[#181715] transition-opacity hover:opacity-80"
           >
             <span className="font-editorial text-2xl md:text-3xl font-light tracking-[0.25em]">
@@ -156,6 +153,7 @@ export default function Navbar() {
             href={getWhatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => setMobileMenuOpen(false)}
             className="w-full inline-flex items-center justify-center space-x-2 py-3 bg-[#702C36] text-[#F7F3EC] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#B79A67] transition-colors"
           >
             <MessageCircle className="w-4 h-4" />

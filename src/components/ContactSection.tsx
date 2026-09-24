@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Mail, MapPin, MessageCircle, ArrowUpRight, Send, Check } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, Send, Check } from "lucide-react";
 import { siteConfig, getWhatsAppUrl } from "@/data/siteConfig";
 
 export default function ContactSection() {

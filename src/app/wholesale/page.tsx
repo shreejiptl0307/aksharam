@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { MessageCircle, ArrowUpRight, CheckCircle2, ShieldCheck, Truck, Sparkles, Layers } from "lucide-react";
+import { MessageCircle, ArrowUpRight, ShieldCheck, Truck, Sparkles, Layers } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import ContactSection from "@/components/ContactSection";
 import Marquee from "@/components/Marquee";
-import { siteConfig, getWhatsAppUrl } from "@/data/siteConfig";
+import { getWhatsAppUrl } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
   title: "Wholesale & B2B Partnerships | Aksharam Ethnic LLP",

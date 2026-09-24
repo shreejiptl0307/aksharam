@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MessageCircle, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { wholesaleBenefits } from "@/data/collections";
-import { siteConfig, getWhatsAppUrl } from "@/data/siteConfig";
+import { getWhatsAppUrl } from "@/data/siteConfig";
 
 export default function Wholesale() {
   return (

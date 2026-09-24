@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Clock, ShieldCheck, MessageCircle, MapPin, Phone, Mail } from "lucide-react";
+import { Clock, ShieldCheck, MessageCircle, MapPin } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import ContactSection from "@/components/ContactSection";
-import { siteConfig, getWhatsAppUrl } from "@/data/siteConfig";
+import { getWhatsAppUrl } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
   title: "Contact & Studio Appointments | Aksharam Ethnic LLP",

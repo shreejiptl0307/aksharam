@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
-import { siteConfig, getWhatsAppUrl } from "@/data/siteConfig";
+import { getWhatsAppUrl } from "@/data/siteConfig";
 
 export default function Customisation() {
   return (

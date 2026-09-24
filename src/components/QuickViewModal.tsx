@@ -18,18 +18,17 @@ export default function QuickViewModal({
   isOpen,
   onClose,
 }: QuickViewModalProps) {
+  const [prevItem, setPrevItem] = useState(item);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
   const [openSection, setOpenSection] = useState<string | null>("piece");
 
-  // Reset states when a new item opens
-  useEffect(() => {
-    if (isOpen) {
-      setActiveImageIndex(0);
-      setIsZoomed(false);
-      setOpenSection("piece");
-    }
-  }, [isOpen, item]);
+  if (item !== prevItem) {
+    setPrevItem(item);
+    setActiveImageIndex(0);
+    setIsZoomed(false);
+    setOpenSection("piece");
+  }
 
   // Keyboard events & scroll lock
   useEffect(() => {

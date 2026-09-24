@@ -51,7 +51,6 @@ const hotspots: Hotspot[] = [
 
 export default function ExploreTheLook() {
   const [activeHotspot, setActiveHotspot] = useState<Hotspot>(hotspots[0]);
-  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-5 sm:px-8 lg:px-16 max-w-[1440px] mx-auto border-t border-[#E4E2DD]">
@@ -98,11 +97,7 @@ export default function ExploreTheLook() {
                       <button
                         type="button"
                         onClick={() => setActiveHotspot(spot)}
-                        onMouseEnter={() => {
-                          setActiveHotspot(spot);
-                          setIsHovered(true);
-                        }}
-                        onMouseLeave={() => setIsHovered(false)}
+                        onMouseEnter={() => setActiveHotspot(spot)}
                         aria-label={`Explore detail: ${spot.title}`}
                         className="relative flex items-center justify-center w-8 h-8 group cursor-pointer focus:outline-hidden"
                       >

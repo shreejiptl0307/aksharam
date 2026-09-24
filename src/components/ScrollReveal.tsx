@@ -18,12 +18,15 @@ export default function ScrollReveal({
   className = "",
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(() => {
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return true;
+    }
+    return false;
+  });
 
   useEffect(() => {
-    // Check for prefers-reduced-motion
     if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setIsVisible(true);
       return;
     }
 

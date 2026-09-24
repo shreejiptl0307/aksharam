@@ -1,28 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Manrope } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import { siteConfig } from "@/data/siteConfig";
 import "./globals.css";
 
-const cormorantGaramond = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#181715",
+  themeColor: "#FAFAF8",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -31,22 +23,20 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Aksharam Ethnic LLP | Contemporary Indian Ethnic Fashion",
+    default: "Aksharam Ethnic LLP | Contemporary Indian Ethnic Wear",
     template: "%s | Aksharam Ethnic LLP",
   },
   description:
-    "Discover Aksharam Ethnic LLP — contemporary Indian ethnic fashion crafted for boutiques, retailers and wholesale partners. Explore lehengas, sarees, dresses, co-ords and more.",
+    "Aksharam Ethnic LLP creates contemporary Indian ethnic fashion for boutiques, retailers and wholesale partners.",
   keywords: [
     "Aksharam Ethnic",
     "Aksharam Ethnic LLP",
-    "Indian ethnic wholesale",
-    "Shisha lehengas wholesale",
-    "Surat ethnic wear manufacturer",
-    "Boutique ethnic wear supplier",
-    "Wholesale sarees manufacturer",
-    "Indian bridesmaid dresses manufacturer",
-    "Surat textile manufacturer",
-    "Contemporary Indian fashion wholesale",
+    "Indian ethnic wear wholesale",
+    "Shisha lehengas",
+    "Surat ethnic wear",
+    "Boutique ethnic supplier",
+    "Wholesale sarees",
+    "Contemporary Indian fashion",
   ],
   authors: [{ name: "Aksharam Ethnic LLP" }],
   creator: "Aksharam Ethnic LLP",
@@ -59,35 +49,28 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: siteConfig.url,
     siteName: "Aksharam Ethnic LLP",
-    title: "Aksharam Ethnic LLP | Contemporary Indian Ethnic Fashion",
+    title: "Aksharam Ethnic LLP | Contemporary Indian Ethnic Wear",
     description:
-      "Contemporary Indian ethnic fashion created with craftsmanship, character, and an eye for modern fashion. B2B wholesale partner for retailers and boutiques.",
+      "Aksharam Ethnic LLP creates contemporary Indian ethnic fashion for boutiques, retailers and wholesale partners.",
     images: [
       {
         url: "/images/hero/hero-main.svg",
         width: 1200,
         height: 630,
-        alt: "Aksharam Ethnic LLP - Haute Indian Ethnic Collections",
+        alt: "Aksharam Ethnic LLP",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aksharam Ethnic LLP | Contemporary Indian Ethnic Fashion",
+    title: "Aksharam Ethnic LLP | Contemporary Indian Ethnic Wear",
     description:
-      "Contemporary Indian ethnic fashion created with craftsmanship, character, and an eye for modern fashion. B2B wholesale partner.",
+      "Aksharam Ethnic LLP creates contemporary Indian ethnic fashion for boutiques, retailers and wholesale partners.",
     images: ["/images/hero/hero-main.svg"],
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
   icons: {
     icon: "/favicon.ico",
@@ -107,10 +90,9 @@ export default function RootLayout({
     alternateName: "Aksharam",
     url: siteConfig.url,
     logo: "https://aksharam.co/images/hero/hero-main.svg",
-    description: siteConfig.description,
+    description: siteConfig.tagline,
     telephone: siteConfig.phone,
     email: siteConfig.email,
-    priceRange: "₹₹₹",
     address: {
       "@type": "PostalAddress",
       streetAddress: `${siteConfig.address.line1}, ${siteConfig.address.line2}, ${siteConfig.address.line3}`,
@@ -119,47 +101,23 @@ export default function RootLayout({
       postalCode: siteConfig.address.pincode,
       addressCountry: "IN",
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "21.1442",
-      longitude: "72.8532",
-    },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ],
-        opens: "10:00",
-        closes: "19:30",
-      },
-    ],
     contactPoint: {
       "@type": "ContactPoint",
       telephone: siteConfig.phone,
       contactType: "sales",
       areaServed: "Worldwide",
-      availableLanguage: ["en", "hi", "gu"],
     },
   };
 
   return (
-    <html
-      lang="en"
-      className={`${cormorantGaramond.variable} ${manrope.variable} scroll-smooth`}
-    >
+    <html lang="en" className={`${manrope.variable} scroll-smooth`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-[#F7F3EC] text-[#181715] flex flex-col font-sans antialiased selection:bg-[#702C36] selection:text-[#F7F3EC]">
+      <body className="min-h-screen bg-[#FAFAF8] text-[#171717] flex flex-col font-sans antialiased">
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />

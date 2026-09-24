@@ -1,10 +1,11 @@
 export const siteConfig = {
   name: "AKSHARAM",
   companyName: "AKSHARAM ETHNIC LLP",
-  tagline: "Crafted in India. Designed to be Remembered.",
-  secondaryTagline: "Inspired by Fashion. Defined by Craft.",
-  description:
-    "Aksharam Ethnic LLP creates distinctive contemporary Indian ethnic fashion for retailers, boutiques, and wholesale partners worldwide. Explore our signature Shisha Lehengas, Sarees, Dresses, Bridesmaid Edits, Co-ords, and Contemporary Silhouettes.",
+  tagline: "Contemporary Indian Ethnic Wear",
+  subtagline: "Crafted for boutiques, retailers and modern wardrobes.",
+  statementHeadline: "Indian craftsmanship, shaped for contemporary fashion.",
+  statementBody:
+    "Aksharam Ethnic LLP creates ethnic collections for retailers and boutiques, combining thoughtful detailing, quality and modern design.",
   url: "https://aksharam.co",
   canonicalUrl: "https://aksharam.co",
   phone: "+91 78018 23811",
@@ -26,36 +27,15 @@ export const siteConfig = {
   whatsapp: {
     number: "917801823811",
     defaultMessage:
-      "Hello Aksharam, I'm interested in your wholesale collections. I'd like to know more about your latest catalogue, pricing and order requirements.",
+      "Hello Aksharam, I'm interested in your wholesale collections. Please share more information about your latest catalogue and wholesale requirements.",
     customisationMessage:
-      "Hello Aksharam, I would like to discuss customisation opportunities and custom production for my boutique/retail store.",
-    catalogueMessage:
-      "Hello Aksharam, please share the latest seasonal lookbook and wholesale line sheets.",
+      "Hello Aksharam, I would like to discuss collection and customisation requirements for my boutique.",
   },
   navLinks: [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
     { label: "Collections", href: "/collections" },
-    { label: "Craftsmanship", href: "/#craftsmanship" },
+    { label: "About", href: "/about" },
     { label: "Wholesale", href: "/wholesale" },
     { label: "Contact", href: "/contact" },
-  ],
-  footerLinks: [
-    { label: "Home", href: "/" },
-    { label: "About Our Story", href: "/about" },
-    { label: "Collections", href: "/collections" },
-    { label: "Wholesale & B2B", href: "/wholesale" },
-    { label: "Contact & Studio", href: "/contact" },
-  ],
-  categoriesMarquee: [
-    "SHISHA LEHENGAS",
-    "HERITAGE SAREES",
-    "OCCASION DRESSES",
-    "BRIDESMAID EDIT",
-    "EVERYDAY CO-ORDS",
-    "CONTEMPORARY ETHNIC",
-    "HAND EMBROIDERY",
-    "ATELIER CRAFT",
   ],
 };
 

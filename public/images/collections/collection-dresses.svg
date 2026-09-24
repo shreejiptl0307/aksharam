@@ -1,63 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2000" width="1600" height="2000">
-  <defs>
-    <radialGradient id="grad" cx="50%" cy="40%" r="70%" fx="40%" fy="30%">
-      <stop offset="0%" stop-color="#2D2823" />
-      <stop offset="100%" stop-color="#181614" />
-    </radialGradient>
-    <linearGradient id="goldShimmer" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#D9C5A0"/>
-      <stop offset="50%" stop-color="#B79A67"/>
-      <stop offset="100%" stop-color="#8F7242"/>
-    </linearGradient>
-    <pattern id="luxPattern" width="80" height="80" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 80 40 L 40 80 L 0 40 Z" fill="none" stroke="rgba(239, 231, 218, 0.12)" stroke-width="0.8"/>
-      <circle cx="40" cy="40" r="1.5" fill="#B79A67" opacity="0.3"/>
-    </pattern>
-  </defs>
+  <!-- Flat Minimal Neutral Studio Background -->
+  <rect width="100%" height="100%" fill="#ECEBE7" />
+  
+  <!-- Subtle Framing Line -->
+  <rect x="24" y="24" width="1552" height="1952" fill="none" stroke="#DCDAD4" stroke-width="1" />
 
-  <!-- Background -->
-  <rect width="100%" height="100%" fill="url(#grad)" />
-  <rect width="100%" height="100%" fill="url(#luxPattern)" opacity="0.85" />
-
-  <!-- Outer Editorial Borders -->
-  <rect x="40" y="40" width="1520" height="1920" fill="none" stroke="#B79A67" stroke-width="1" opacity="0.35"/>
-  <rect x="52" y="52" width="1496" height="1896" fill="none" stroke="#B79A67" stroke-width="0.5" opacity="0.2"/>
-
-  <!-- Corner Ornaments -->
-  <path d="M 32 60 L 32 32 L 60 32" fill="none" stroke="url(#goldShimmer)" stroke-width="2"/>
-  <path d="M 1540 32 L 1568 32 L 1568 60" fill="none" stroke="url(#goldShimmer)" stroke-width="2"/>
-  <path d="M 32 1940 L 32 1968 L 60 1968" fill="none" stroke="url(#goldShimmer)" stroke-width="2"/>
-  <path d="M 1540 1968 L 1568 1968 L 1568 1940" fill="none" stroke="url(#goldShimmer)" stroke-width="2"/>
-
-  <!-- Center Luxury Motif -->
-  <g transform="translate(800, 960)">
-    <circle r="70" fill="none" stroke="#B79A67" stroke-width="1" opacity="0.4"/>
-    <circle r="50" fill="none" stroke="#B79A67" stroke-width="0.75" stroke-dasharray="4,4" opacity="0.5"/>
-    <polygon points="0,-40 38,0 0,40 -38,0" fill="none" stroke="url(#goldShimmer)" stroke-width="1.2" opacity="0.7"/>
-    <text y="8" font-family="'Times New Roman', Georgia, serif" font-size="28" fill="url(#goldShimmer)" text-anchor="middle" font-weight="300" letter-spacing="4">A</text>
+  <!-- Clean Editorial Typography -->
+  <g transform="translate(800, 1000)">
+    <text y="-8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="28" fill="#171717" text-anchor="middle" font-weight="500" letter-spacing="3">
+      DRESSES
+    </text>
+    <text y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#73706B" text-anchor="middle" font-weight="400" letter-spacing="2">
+      Collection 03
+    </text>
   </g>
 
-  <!-- Category Pill -->
-  <g transform="translate(800, 1050)">
-    <rect x="-130" y="-16" width="260" height="32" rx="0" fill="rgba(0,0,0,0.4)" stroke="#B79A67" stroke-width="0.75" opacity="0.8"/>
-    <text y="5" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#B79A67" text-anchor="middle" font-weight="600" letter-spacing="3.5">COLLECTION 03</text>
-  </g>
-
-  <!-- Main Title -->
-  <text x="800" y="1115" font-family="'Times New Roman', Georgia, serif" font-size="44" fill="#F7F3EC" text-anchor="middle" font-weight="400" letter-spacing="2">
-    FASHION DRESSES
-  </text>
-
-  <!-- Subtitle -->
-  <text x="800" y="1155" font-family="system-ui, -apple-system, sans-serif" font-size="17" fill="#BDB3A6" text-anchor="middle" font-weight="300" letter-spacing="1.5">
-    Fusion Silhouettes for Evening Celebrations
-  </text>
-
-  <!-- Footer Specs & Brand watermark -->
-  <text x="70" y="1935" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#BDB3A6" opacity="0.8" letter-spacing="2">
+  <!-- Technical Spec Footer -->
+  <text x="44" y="1960" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#73706B" font-weight="400" letter-spacing="1.5">
     AKSHARAM ETHNIC LLP
   </text>
-  <text x="1530" y="1935" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#B79A67" text-anchor="end" opacity="0.8" letter-spacing="1.5">
-    1600 × 2000px [REPLACE WITH PHOTOGRAPHY]
+  <text x="1556" y="1960" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#73706B" text-anchor="end" font-weight="400" letter-spacing="1">
+    1600 × 2000px [PHOTOGRAPHY PLACEHOLDER]
   </text>
 </svg>

@@ -1,111 +1,60 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  --font-sans: var(--font-manrope), "Manrope", system-ui, -apple-system, sans-serif;
 
-  --color-ivory: #F7F3EC;
-  --color-cream: #EFE7DA;
-  --color-sand: #E7DECF;
-  --color-charcoal-dark: #181715;
-  --color-charcoal: #57524B;
-  --color-charcoal-light: #7E786E;
-  --color-burgundy: #702C36;
-  --color-burgundy-dark: #4A1B22;
-  --color-gold: #B79A67;
-  --color-gold-light: #D9C5A0;
-  --color-gold-dark: #8F7242;
+  --color-bg-main: #FAFAF8;
+  --color-bg-alt: #F3F2EE;
+  --color-text-main: #171717;
+  --color-text-muted: #66635F;
+  --color-border-subtle: #E4E2DD;
+  --color-black-solid: #171717;
 }
 
 :root {
-  --background: #F7F3EC;
-  --foreground: #181715;
+  --background: #FAFAF8;
+  --foreground: #171717;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #F7F3EC;
-  color: #181715;
+  background-color: #FAFAF8;
+  color: #171717;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background-color: #F7F3EC;
-  color: #181715;
+  background-color: #FAFAF8;
+  color: #171717;
   font-family: var(--font-sans), sans-serif;
   overflow-x: hidden;
-  selection-background-color: #702C36;
-  selection-color: #F7F3EC;
 }
 
 ::selection {
-  background: #702C36;
-  color: #F7F3EC;
+  background: #171717;
+  color: #FAFAF8;
 }
 
+/* Restrained scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #EFE7DA;
+  background: #FAFAF8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #B79A67;
-  border-radius: 0px;
+  background: #D8D6D0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #702C36;
-}
-
-/* Editorial Typography utilities */
-.font-editorial {
-  font-family: var(--font-serif), Georgia, serif;
-}
-
-.text-balance {
-  text-wrap: balance;
-}
-
-/* Subtle Shimmer & Borders */
-.border-subtle {
-  border-color: rgba(24, 23, 21, 0.08);
-}
-
-.border-subtle-dark {
-  border-color: rgba(247, 243, 236, 0.12);
-}
-
-.border-gold-subtle {
-  border-color: rgba(183, 154, 103, 0.25);
-}
-
-/* Marquee Animation */
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  display: flex;
-  width: 200%;
-  animation: marquee 35s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
+  background: #171717;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-marquee {
-    animation: none;
-    transform: none;
-  }
   html {
     scroll-behavior: auto;
   }

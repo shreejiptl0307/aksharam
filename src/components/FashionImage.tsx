@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 
+export type ImageOrientation = "portrait" | "landscape" | "natural" | "detail";
+
 export interface FashionImageProps {
   src: string;
   mobileSrc?: string;
@@ -12,17 +14,14 @@ export interface FashionImageProps {
   isTapped?: boolean;
   priority?: boolean;
   sizes?: string;
-  // Aspect ratio classes, e.g. "aspect-[4/5]", "aspect-[16/9]"
+  orientation?: ImageOrientation;
+  // Explicit override classes if needed
   mobileAspect?: string;
   desktopAspect?: string;
-  // Object position classes, e.g. "object-top", "object-[center_15%]"
   mobilePosition?: string;
   desktopPosition?: string;
-  // Container & Image custom classes
   containerClassName?: string;
   className?: string;
-  // Natural height mode
-  naturalRatio?: boolean;
 }
 
 export default function FashionImage({
@@ -34,17 +33,35 @@ export default function FashionImage({
   isTapped = false,
   priority = false,
   sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
-  mobileAspect = "aspect-[4/5]",
-  desktopAspect = "md:aspect-[4/5]",
-  mobilePosition = "object-top",
-  desktopPosition = "md:object-top",
+  orientation = "portrait",
+  mobileAspect,
+  desktopAspect,
+  mobilePosition,
+  desktopPosition,
   containerClassName = "",
   className = "",
-  naturalRatio = false,
 }: FashionImageProps) {
   const [loaded, setLoaded] = useState(false);
 
-  if (naturalRatio) {
+  // Derive defaults from orientation
+  let resolvedMobileAspect = mobileAspect || "aspect-[4/5]";
+  let resolvedDesktopAspect = desktopAspect || "md:aspect-[4/5]";
+  let resolvedMobilePosition = mobilePosition || "object-top";
+  let resolvedDesktopPosition = desktopPosition || "md:object-top";
+
+  if (orientation === "landscape") {
+    resolvedMobileAspect = mobileAspect || "aspect-[4/5]";
+    resolvedDesktopAspect = desktopAspect || "md:aspect-[16/10]";
+    resolvedMobilePosition = mobilePosition || "object-top";
+    resolvedDesktopPosition = desktopPosition || "md:object-[center_25%]";
+  } else if (orientation === "detail") {
+    resolvedMobileAspect = mobileAspect || "aspect-[4/3]";
+    resolvedDesktopAspect = desktopAspect || "md:aspect-[4/3]";
+    resolvedMobilePosition = mobilePosition || "object-center";
+    resolvedDesktopPosition = desktopPosition || "md:object-center";
+  }
+
+  if (orientation === "natural") {
     return (
       <div className={`relative w-full overflow-hidden bg-[#ECEBE7] ${containerClassName}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -65,7 +82,7 @@ export default function FashionImage({
           <img
             src={hoverSrc}
             alt={hoverAlt || alt}
-            className={`absolute inset-0 w-full h-full object-cover ${mobilePosition} ${desktopPosition} transition-all duration-500 ease-out ${
+            className={`absolute inset-0 w-full h-full object-cover ${resolvedMobilePosition} ${resolvedDesktopPosition} transition-all duration-500 ease-out ${
               isTapped
                 ? "opacity-100"
                 : "opacity-0 group-hover:opacity-100"
@@ -79,7 +96,7 @@ export default function FashionImage({
 
   return (
     <div
-      className={`relative w-full ${mobileAspect} ${desktopAspect} overflow-hidden bg-[#ECEBE7] ${containerClassName}`}
+      className={`relative w-full ${resolvedMobileAspect} ${resolvedDesktopAspect} overflow-hidden bg-[#ECEBE7] ${containerClassName}`}
     >
       {/* Primary Image */}
       <Image
@@ -89,7 +106,7 @@ export default function FashionImage({
         priority={priority}
         sizes={sizes}
         onLoad={() => setLoaded(true)}
-        className={`object-cover ${mobilePosition} ${desktopPosition} transition-all duration-500 ease-out ${
+        className={`object-cover ${resolvedMobilePosition} ${resolvedDesktopPosition} transition-all duration-500 ease-out ${
           loaded ? "scale-100" : "scale-[1.01]"
         } ${
           hoverSrc
@@ -107,7 +124,7 @@ export default function FashionImage({
           alt={hoverAlt || alt}
           fill
           sizes={sizes}
-          className={`object-cover ${mobilePosition} ${desktopPosition} transition-all duration-500 ease-out ${
+          className={`object-cover ${resolvedMobilePosition} ${resolvedDesktopPosition} transition-all duration-500 ease-out ${
             isTapped
               ? "opacity-100 scale-[1.015]"
               : "opacity-0 group-hover:opacity-100 group-hover:scale-[1.015]"

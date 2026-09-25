@@ -78,23 +78,25 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Campaign Hero Photograph with Responsive Aspect Ratio */}
+      {/* Campaign Hero Photograph — Intentional Editorial Portrait Composition */}
       <div
         style={{ transitionDelay: "320ms" }}
-        className={`relative w-full aspect-[4/5] sm:aspect-[16/9] lg:aspect-[16/7] overflow-hidden bg-[#ECEBE7] transition-all duration-900 ease-out ${
+        className={`w-full flex justify-center pt-2 sm:pt-4 transition-all duration-900 ease-out ${
           loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}
       >
-        <Image
-          src="/images/hero/hero-main.jpg"
-          alt="Aksharam bridal lehenga campaign featuring intricate silver zardozi embroidery"
-          fill
-          priority
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1440px"
-          className={`object-cover object-top sm:object-[center_20%] md:object-[center_25%] transition-transform duration-1000 ease-out ${
-            loaded ? "scale-100" : "scale-[1.025]"
-          }`}
-        />
+        <div className="relative w-full max-w-[760px] aspect-[4/5] overflow-hidden bg-[#ECEBE7] shadow-xs">
+          <Image
+            src="/images/hero/hero-main.jpg"
+            alt="Aksharam bridal lehenga campaign featuring intricate silver zardozi embroidery"
+            fill
+            priority
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 760px"
+            className={`object-cover object-top transition-transform duration-1000 ease-out ${
+              loaded ? "scale-100" : "scale-[1.015]"
+            }`}
+          />
+        </div>
       </div>
     </section>
   );

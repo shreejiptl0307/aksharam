@@ -55,13 +55,13 @@ export default function WholesaleSection() {
           {/* Right Column: Subtle Fashion / Product Image */}
           <div className="lg:col-span-6">
             <ScrollReveal delay={100} duration={800}>
-              <div className="relative w-full aspect-[4/5] sm:aspect-[16/10] lg:aspect-[4/3] overflow-hidden bg-[#ECEBE7]">
+              <div className="relative w-full aspect-[4/5] overflow-hidden bg-[#ECEBE7]">
                 <Image
                   src="/images/collections/collection-contemporary.jpg"
                   alt="Aksharam contemporary ethnic wear wholesale ensemble"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
-                  className="object-cover object-top sm:object-top transition-transform duration-600 ease-out hover:scale-[1.02]"
+                  className="object-cover object-top transition-transform duration-600 ease-out hover:scale-[1.02]"
                 />
               </div>
             </ScrollReveal>

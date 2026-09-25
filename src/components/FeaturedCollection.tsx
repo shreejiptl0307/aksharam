@@ -9,7 +9,7 @@ export default function FeaturedCollection() {
         {/* Left Column: 58% Image */}
         <div className="lg:col-span-7 order-1">
           <ScrollReveal duration={800}>
-            <div className="relative w-full aspect-[4/5] sm:aspect-[16/11] lg:aspect-[4/3] overflow-hidden bg-[#ECEBE7]">
+            <div className="relative w-full aspect-[4/5] overflow-hidden bg-[#ECEBE7]">
               <Image
                 src="/images/collections/featured-shisha.jpg"
                 alt="The Shisha Collection lehenga featuring intricate mirrorwork and embroidery"

@@ -34,10 +34,10 @@ export default function CartDrawer() {
         onClick={() => setIsCartOpen(false)}
       />
 
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
+      <div className="fixed inset-y-0 right-0 max-w-full flex pl-4 sm:pl-10">
         <div className="w-screen max-w-md bg-white border-l border-[#EAE5DC] shadow-2xl flex flex-col justify-between">
           {/* Header */}
-          <div className="px-6 py-5 bg-[#FAF7F2] border-b border-[#EAE5DC] flex items-center justify-between">
+          <div className="px-5 sm:px-6 py-4 sm:py-5 bg-[#FAF7F2] border-b border-[#EAE5DC] flex items-center justify-between">
             <div className="flex items-center space-x-2.5">
               <ShoppingBag className="w-5 h-5 text-[#7D1D2B]" />
               <div>

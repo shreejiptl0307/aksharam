@@ -22,9 +22,15 @@ function loadImage(src: string): Promise<HTMLImageElement> {
  */
 export async function generateOrderSlipCanvas(
   cart: CartItem[],
-  reseller: ResellerInfo,
-  orderId: string
+  reseller?: Partial<ResellerInfo> | string,
+  orderId?: string
 ): Promise<string> {
+  const resolvedOrderId =
+    orderId || `ORD-${Date.now().toString(36).toUpperCase().slice(-5)}`;
+  const resellerNote =
+    typeof reseller === "string"
+      ? reseller
+      : reseller?.shopName || reseller?.notes || "Boutique Wholesale Order";
   const width = 1000;
   // Calculate dynamic height based on number of items
   const headerHeight = 220;
@@ -85,7 +91,7 @@ export async function generateOrderSlipCanvas(
   ctx.fillStyle = "#E4D5BE";
   ctx.font = "13px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
   ctx.fillText(
-    `Order Ref: ${orderId}  •  Surat Mill Unit  •  WhatsApp: ${siteConfig.whatsapp.displayNumber}`,
+    `Order Ref: ${resolvedOrderId}  •  Surat Mill Unit  •  WhatsApp: ${siteConfig.whatsapp.displayNumber}`,
     width / 2,
     172
   );
@@ -105,16 +111,16 @@ export async function generateOrderSlipCanvas(
   ctx.textAlign = "left";
   ctx.fillStyle = "#7D1D2B";
   ctx.font = "bold 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-  ctx.fillText("RESELLER & CONSIGNMENT DETAILS", cardX + 24, currentY + 30);
+  ctx.fillText("WHOLESALE CONSIGNMENT DETAILS", cardX + 24, currentY + 30);
 
   ctx.fillStyle = "#1C1917";
   ctx.font = "bold 18px Georgia, serif";
-  ctx.fillText(`Shop: ${reseller.shopName || "Registered Reseller"}`, cardX + 24, currentY + 60);
+  ctx.fillText(resellerNote, cardX + 24, currentY + 60);
 
   ctx.fillStyle = "#55524E";
   ctx.font = "14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
   ctx.fillText(
-    `Attn: ${reseller.contactPerson || "Boutique Owner"}    |    City: ${reseller.city || "India"}`,
+    "Direct Mill Dispatch  |  Surat, Gujarat, India",
     cardX + 24,
     currentY + 86
   );
@@ -258,11 +264,15 @@ export async function generateOrderSlipCanvas(
     currentY + 78
   );
 
-  if (reseller.notes && reseller.notes.trim()) {
+  const notesText =
+    typeof reseller === "string"
+      ? reseller
+      : reseller?.notes || "";
+  if (notesText && notesText.trim()) {
     ctx.fillStyle = "#78716C";
     ctx.font = "italic 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
     ctx.fillText(
-      `Special Instructions: ${reseller.notes.trim().slice(0, 75)}${reseller.notes.length > 75 ? "..." : ""}`,
+      `Special Instructions: ${notesText.trim().slice(0, 75)}${notesText.length > 75 ? "..." : ""}`,
       cardX + 24,
       currentY + 105
     );

@@ -24,7 +24,7 @@ export default function HomePage() {
   return (
     <div className="bg-[#FAF7F2] min-h-screen">
       {/* 1. HERO SECTION */}
-      <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden border-b border-[#EAE5DC]">
+      <section className="relative pt-6 pb-16 sm:pt-12 sm:pb-24 overflow-hidden border-b border-[#EAE5DC]">
         {/* Subtle background ornamentation */}
         <div className="absolute inset-0 bg-[radial-gradient(#C5A880_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none" />
 

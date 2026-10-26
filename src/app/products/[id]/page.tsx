@@ -47,8 +47,8 @@ export default async function ProductDetailPage({ params }: Props) {
     .slice(0, 3);
 
   return (
-    <div className="pt-24 sm:pt-28 pb-20 bg-[#FAF7F2] min-h-screen">
-      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16">
+    <div className="pt-5 sm:pt-8 pb-20 bg-[#FAF7F2] min-h-screen">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-16">
         {/* Breadcrumb Navigation */}
         <div className="mb-6 flex items-center space-x-2 text-xs text-[#78716C]">
           <Link

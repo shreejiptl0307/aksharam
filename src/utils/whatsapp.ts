@@ -3,7 +3,7 @@ import { siteConfig } from "@/data/siteConfig";
 
 export function formatWhatsAppOrderMessage(
   cart: CartItem[],
-  reseller: ResellerInfo,
+  reseller?: Partial<ResellerInfo> | string,
   baseUrl?: string
 ): string {
   const origin =
@@ -16,14 +16,37 @@ export function formatWhatsAppOrderMessage(
 
   lines.push(`NEW WHOLESALE ORDER — AKSHARAM TEXTILES`);
   lines.push(``);
-  lines.push(`Reseller: ${reseller.shopName || "N/A"}`);
-  lines.push(`Contact Person: ${reseller.contactPerson || "N/A"}`);
-  lines.push(`City: ${reseller.city || "N/A"}`);
-  if (reseller.phone) {
-    lines.push(`Phone: ${reseller.phone}`);
+
+  if (typeof reseller === "string" && reseller.trim()) {
+    lines.push(`Boutique / Notes: ${reseller.trim()}`);
+    lines.push(``);
+  } else if (reseller && typeof reseller === "object") {
+    if (reseller.shopName && reseller.shopName.trim()) {
+      lines.push(`Reseller: ${reseller.shopName.trim()}`);
+    }
+    if (reseller.contactPerson && reseller.contactPerson.trim()) {
+      lines.push(`Contact Person: ${reseller.contactPerson.trim()}`);
+    }
+    if (reseller.city && reseller.city.trim()) {
+      lines.push(`City: ${reseller.city.trim()}`);
+    }
+    if (reseller.phone && reseller.phone.trim()) {
+      lines.push(`Phone: ${reseller.phone.trim()}`);
+    }
+    if (reseller.notes && reseller.notes.trim()) {
+      lines.push(`Notes: ${reseller.notes.trim()}`);
+    }
+    if (
+      reseller.shopName ||
+      reseller.contactPerson ||
+      reseller.city ||
+      reseller.phone ||
+      reseller.notes
+    ) {
+      lines.push(``);
+    }
   }
 
-  lines.push(``);
   lines.push(`ORDER DETAILS`);
   lines.push(``);
 
@@ -46,12 +69,6 @@ export function formatWhatsAppOrderMessage(
 
   lines.push(`TOTAL DESIGNS: ${totalDesigns}`);
   lines.push(`TOTAL PIECES: ${totalPieces}`);
-
-  if (reseller.notes && reseller.notes.trim()) {
-    lines.push(``);
-    lines.push(`Additional Notes: ${reseller.notes.trim()}`);
-  }
-
   lines.push(``);
   lines.push(`Please confirm availability and order details.`);
 
@@ -60,7 +77,7 @@ export function formatWhatsAppOrderMessage(
 
 export function generateWhatsAppOrderUrl(
   cart: CartItem[],
-  reseller: ResellerInfo,
+  reseller?: Partial<ResellerInfo> | string,
   baseUrl?: string
 ): string {
   const message = formatWhatsAppOrderMessage(cart, reseller, baseUrl);

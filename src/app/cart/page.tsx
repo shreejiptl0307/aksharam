@@ -28,8 +28,8 @@ export default function CartPage() {
   } = useCart();
 
   return (
-    <div className="pt-24 sm:pt-28 pb-20 bg-[#FAF7F2] min-h-screen">
-      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16">
+    <div className="pt-5 sm:pt-8 pb-20 bg-[#FAF7F2] min-h-screen">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-16">
         {/* Header */}
         <div className="border-b border-[#EAE5DC] pb-6 mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>

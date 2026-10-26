@@ -80,14 +80,31 @@ export function getStoredOrders(): WholesaleOrderRecord[] {
 }
 
 export function recordNewOrder(
-  reseller: ResellerInfo,
+  resellerInput: Partial<ResellerInfo> | string | undefined,
   cart: { product: Product; quantity: number }[]
 ): WholesaleOrderRecord {
+  const normalizedReseller: ResellerInfo =
+    typeof resellerInput === "string"
+      ? {
+          shopName: resellerInput.trim() || "Wholesale Buyer",
+          contactPerson: "",
+          city: "",
+          phone: "",
+          notes: resellerInput.trim(),
+        }
+      : {
+          shopName: resellerInput?.shopName || "Wholesale Buyer",
+          contactPerson: resellerInput?.contactPerson || "",
+          city: resellerInput?.city || "",
+          phone: resellerInput?.phone || "",
+          notes: resellerInput?.notes || "",
+        };
+
   const orders = getStoredOrders();
   const newOrder: WholesaleOrderRecord = {
     id: `ORD-${Date.now().toString(36).toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`,
     createdAt: new Date().toISOString(),
-    reseller,
+    reseller: normalizedReseller,
     items: cart.map((item) => ({
       productId: item.product.id,
       productCode: item.product.code,

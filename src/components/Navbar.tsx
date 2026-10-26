@@ -1,16 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
-import { siteConfig, getWhatsAppUrl } from "@/data/siteConfig";
+import { useCart } from "@/context/CartContext";
+import { siteConfig } from "@/data/siteConfig";
+import {
+  Menu,
+  X,
+  ShoppingBag,
+  MessageCircle,
+  Shield,
+  Sparkles,
+} from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { totalPieces, setIsCartOpen } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,134 +31,222 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Top B2B Announcement Bar */}
+      <div className="bg-[#1C1917] text-[#FAF7F2] text-[11px] py-2 px-4 border-b border-white/10">
+        <div className="max-w-[1440px] mx-auto flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <span className="inline-block w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+            <span className="font-medium tracking-wide">
+              B2B Wholesale Portal • Surat Mill Direct Supply • Zero Price Display
+            </span>
+          </div>
+
+          <div className="hidden sm:flex items-center space-x-4 text-white/80">
+            <span>Production WhatsApp:</span>
+            <a
+              href={`https://api.whatsapp.com/send?phone=${siteConfig.whatsapp.number}&text=${encodeURIComponent(
+                "Hello Aksharam Textiles, I am a textile reseller/boutique owner looking to order wholesale lehengas."
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#E4D5BE] hover:text-white font-mono font-bold flex items-center space-x-1"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
+              <span>{siteConfig.whatsapp.displayNumber}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Header */}
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={`fixed top-[31px] left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? "bg-[#FAFAF8]/95 backdrop-blur-xs border-b border-black/[0.08] h-16 md:h-[68px]"
-            : "bg-[#FAFAF8]/80 backdrop-blur-xs h-16 md:h-[72px]"
-        } flex items-center`}
+            ? "bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#EAE5DC] shadow-xs py-3.5"
+            : "bg-[#FAF7F2]/90 backdrop-blur-sm border-b border-[#EAE5DC]/60 py-4"
+        }`}
       >
-        <div className="w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16 flex items-center justify-between">
-          {/* Official Aksharam Brand Logo */}
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16 flex items-center justify-between">
+          {/* Brand Identity */}
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center hover:opacity-85 transition-opacity min-h-[44px]"
-            aria-label="Aksharam Ethnic LLP - Home"
+            className="flex flex-col group"
           >
-            <Image
-              src={siteConfig.logo.src}
-              alt={siteConfig.logo.alt}
-              width={160}
-              height={43}
-              priority
-              className="h-6 sm:h-7 md:h-[32px] w-auto object-contain"
-            />
+            <div className="flex items-center space-x-2">
+              <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-[#1C1917] group-hover:text-[#7D1D2B] transition-colors">
+                AKSHARAM TEXTILES
+              </span>
+              <span className="hidden sm:inline-block px-1.5 py-0.5 text-[9px] uppercase font-bold tracking-widest bg-[#7D1D2B] text-white">
+                Wholesale
+              </span>
+            </div>
+            <span className="text-[10px] tracking-widest uppercase text-[#78716C] -mt-0.5">
+              Surat Manufacturer • Direct Mill Supply
+            </span>
           </Link>
 
-          {/* Center Navigation (Desktop / Tablet Large) */}
-          <nav className="hidden md:flex items-center space-x-7 lg:space-x-10 text-[13px] tracking-[0.08em] text-[#66635F]">
-            {siteConfig.navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className={`nav-link-animated transition-colors hover:text-[#171717] py-2 ${
-                    isActive ? "text-[#171717] font-medium active-link" : ""
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-widest font-semibold text-[#57534E]">
+            <Link
+              href="/"
+              className={`hover:text-[#7D1D2B] transition-colors ${
+                pathname === "/" ? "text-[#7D1D2B]" : ""
+              }`}
+            >
+              Home
+            </Link>
+            <Link
+              href="/catalogue"
+              className={`hover:text-[#7D1D2B] transition-colors ${
+                pathname === "/catalogue" ? "text-[#7D1D2B]" : ""
+              }`}
+            >
+              All Catalogue
+            </Link>
+            <Link
+              href="/catalogue?category=Bridal+Silk"
+              className="hover:text-[#7D1D2B] transition-colors"
+            >
+              Bridal Silk
+            </Link>
+            <Link
+              href="/catalogue?category=Festive+Silk"
+              className="hover:text-[#7D1D2B] transition-colors"
+            >
+              Festive Silk
+            </Link>
+            <Link
+              href="/catalogue?category=Tissue"
+              className="hover:text-[#7D1D2B] transition-colors"
+            >
+              Tissue
+            </Link>
+            <Link
+              href="/admin"
+              className={`hover:text-[#7D1D2B] transition-colors flex items-center space-x-1 ${
+                pathname === "/admin" ? "text-[#7D1D2B]" : ""
+              }`}
+            >
+              <Shield className="w-3.5 h-3.5" />
+              <span>Admin</span>
+            </Link>
           </nav>
 
-          {/* Right Action (Desktop) */}
-          <div className="hidden md:flex items-center">
-            <a
-              href={getWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center space-x-1 text-[13px] tracking-[0.08em] font-medium text-[#171717] hover:opacity-80 transition-opacity py-2"
+          {/* Right Action: Cart Button & Mobile Menu */}
+          <div className="flex items-center space-x-3 sm:space-x-4">
+            {/* Live Cart Button with Piece Counter */}
+            <button
+              type="button"
+              onClick={() => setIsCartOpen(true)}
+              className="relative py-2 px-3.5 sm:px-4 bg-[#7D1D2B] text-white hover:bg-[#58121C] text-xs uppercase tracking-widest font-semibold transition-all flex items-center space-x-2 shadow-2xs"
+              aria-label="View Wholesale Cart"
             >
-              <span>Enquire</span>
-              <span className="inline-block transition-transform duration-250 ease-out group-hover:translate-x-1">
-                →
+              <ShoppingBag className="w-4 h-4" />
+              <span className="hidden sm:inline">Wholesale Cart</span>
+              <span className="bg-white text-[#7D1D2B] font-bold px-1.5 py-0.5 rounded-full text-[11px] min-w-[20px] text-center">
+                {totalPieces}
               </span>
-            </a>
-          </div>
+            </button>
 
-          {/* Mobile Toggle Button with 44px min tap target */}
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-            aria-expanded={mobileMenuOpen}
-            className="md:hidden flex items-center justify-center min-w-[44px] min-h-[44px] text-xs uppercase tracking-[0.15em] font-medium text-[#171717] hover:opacity-70 transition-opacity"
-          >
-            {mobileMenuOpen ? (
-              <span className="flex items-center space-x-1.5">
-                <span>CLOSE</span>
-                <X className="w-4 h-4 stroke-[1.5]" />
-              </span>
-            ) : (
-              <span className="flex items-center space-x-1.5">
-                <span>MENU</span>
-                <Menu className="w-4 h-4 stroke-[1.5]" />
-              </span>
-            )}
-          </button>
+            {/* Mobile Menu Toggle */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden p-2 text-[#1C1917] hover:bg-[#EAE5DC] transition-colors"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* Clean Mobile Full-Screen Menu */}
+      {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-30 bg-[#FAFAF8] pt-20 sm:pt-24 px-6 sm:px-10 flex flex-col justify-between pb-8 md:hidden animate-in fade-in slide-in-from-top-2 duration-250">
-          <nav className="flex flex-col space-y-5 pt-4 text-xl sm:text-2xl font-light text-[#171717] tracking-tight">
-            {siteConfig.navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center justify-between py-2 border-b border-[#E4E2DD]/60 hover:opacity-70 transition-opacity ${
-                    isActive ? "font-normal text-[#171717]" : "text-[#171717]"
-                  }`}
-                >
-                  <span>{link.label}</span>
-                  <span className="text-xs text-[#66635F]">→</span>
-                </Link>
-              );
-            })}
+        <div className="fixed inset-0 z-30 bg-[#FAF7F2] pt-32 px-6 pb-8 lg:hidden flex flex-col justify-between animate-in fade-in duration-200">
+          <nav className="flex flex-col space-y-4 text-base font-serif font-medium text-[#1C1917]">
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 border-b border-[#EAE5DC] flex justify-between items-center"
+            >
+              <span>Home Overview</span>
+              <span className="text-xs text-[#78716C]">→</span>
+            </Link>
+            <Link
+              href="/catalogue"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 border-b border-[#EAE5DC] flex justify-between items-center"
+            >
+              <span>Wholesale Catalogue (All Designs)</span>
+              <span className="text-xs text-[#78716C]">→</span>
+            </Link>
+            <Link
+              href="/catalogue?category=Bridal+Silk"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 border-b border-[#EAE5DC] flex justify-between items-center"
+            >
+              <span>Bridal Silk Lehengas</span>
+              <span className="text-xs text-[#78716C]">→</span>
+            </Link>
+            <Link
+              href="/catalogue?category=Festive+Silk"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 border-b border-[#EAE5DC] flex justify-between items-center"
+            >
+              <span>Festive Silk Lehengas</span>
+              <span className="text-xs text-[#78716C]">→</span>
+            </Link>
+            <Link
+              href="/catalogue?category=Tissue"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 border-b border-[#EAE5DC] flex justify-between items-center"
+            >
+              <span>Tissue Lehengas</span>
+              <span className="text-xs text-[#78716C]">→</span>
+            </Link>
+            <Link
+              href="/admin"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 border-b border-[#EAE5DC] flex justify-between items-center text-[#7D1D2B]"
+            >
+              <span>Admin Management Desk</span>
+              <span className="text-xs text-[#7D1D2B]">🔒</span>
+            </Link>
           </nav>
 
-          <div className="pt-6 border-t border-[#E4E2DD] space-y-4">
-            <div className="flex flex-col space-y-2 text-xs uppercase tracking-[0.15em] font-medium text-[#171717]">
-              <a
-                href={getWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between py-2.5 text-[#171717] hover:opacity-70 transition-opacity"
-              >
-                <span>Enquire →</span>
-                <span className="text-[10px] text-[#66635F]">WhatsApp</span>
-              </a>
-              <a
-                href={siteConfig.instagram.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between py-2.5 text-[#66635F] hover:text-[#171717] transition-colors"
-              >
-                <span>Instagram ↗</span>
-                <span className="text-[10px] lowercase text-[#66635F]">{siteConfig.instagram.handle}</span>
-              </a>
-            </div>
+          <div className="space-y-3 pt-6 border-t border-[#EAE5DC]">
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                setIsCartOpen(true);
+              }}
+              className="w-full py-3 bg-[#7D1D2B] text-white text-xs uppercase tracking-widest font-semibold flex items-center justify-center space-x-2"
+            >
+              <ShoppingBag className="w-4 h-4" />
+              <span>Open Cart ({totalPieces} Pieces)</span>
+            </button>
 
-            <p className="text-[11px] text-[#66635F] font-light pt-2">
-              Aksharam Ethnic LLP • Surat, Gujarat, India
+            <a
+              href={`https://api.whatsapp.com/send?phone=${siteConfig.whatsapp.number}&text=${encodeURIComponent(
+                "Hello Aksharam Textiles, I want to inquire about wholesale lehengas for my shop."
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-3 bg-[#25D366] text-white text-xs uppercase tracking-widest font-semibold flex items-center justify-center space-x-2"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>WhatsApp Direct Desk</span>
+            </a>
+
+            <p className="text-[11px] text-[#78716C] text-center pt-2">
+              Aksharam Textiles • Surat, Gujarat, India
             </p>
           </div>
         </div>

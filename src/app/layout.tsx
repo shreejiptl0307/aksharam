@@ -1,20 +1,31 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope } from "next/font/google";
+import { Playfair_Display, Manrope } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
+import CartDrawer from "@/components/CartDrawer";
+import OrderReviewModal from "@/components/OrderReviewModal";
+import ToastNotification from "@/components/ToastNotification";
+import { CartProvider } from "@/context/CartContext";
 import { siteConfig } from "@/data/siteConfig";
 import "./globals.css";
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
 
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#FAFAF8",
+  themeColor: "#FAF7F2",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -23,24 +34,24 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Aksharam Ethnic LLP | Contemporary Indian Ethnic Wear",
-    template: "%s | Aksharam Ethnic LLP",
+    default: "Aksharam Textiles | Wholesale Indian Ethnic Wear Manufacturer Surat",
+    template: "%s | Aksharam Textiles",
   },
   description:
-    "Aksharam Ethnic LLP creates contemporary Indian ethnic fashion for boutiques, retailers and wholesale partners.",
+    "Official B2B wholesale portal for Aksharam Textiles Surat. Handcrafted bridal silk, festive silk, and tissue lehengas directly supplied to boutiques and resellers worldwide. Zero price portal with WhatsApp ordering.",
   keywords: [
-    "Aksharam Ethnic",
-    "Aksharam Ethnic LLP",
-    "Indian ethnic wear wholesale",
-    "Shisha lehengas",
-    "Surat ethnic wear",
-    "Boutique ethnic supplier",
-    "Wholesale sarees",
-    "Contemporary Indian fashion",
+    "Aksharam Textiles",
+    "Surat textile manufacturer",
+    "Wholesale lehengas Surat",
+    "Bridal silk lehengas wholesale",
+    "B2B ethnic wear manufacturer",
+    "Indian textile wholesale",
+    "Tissue lehengas manufacturer",
+    "Reseller ethnic wear supplier",
   ],
-  authors: [{ name: "Aksharam Ethnic LLP" }],
-  creator: "Aksharam Ethnic LLP",
-  publisher: "Aksharam Ethnic LLP",
+  authors: [{ name: "Aksharam Textiles" }],
+  creator: "Aksharam Textiles",
+  publisher: "Aksharam Textiles",
   alternates: {
     canonical: siteConfig.canonicalUrl,
   },
@@ -48,29 +59,18 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: siteConfig.url,
-    siteName: "Aksharam Ethnic LLP",
-    title: "Aksharam Ethnic LLP | Contemporary Indian Ethnic Wear",
+    siteName: "Aksharam Textiles",
+    title: "Aksharam Textiles | Wholesale Indian Ethnic Wear Manufacturer",
     description:
-      "Aksharam Ethnic LLP creates contemporary Indian ethnic fashion for boutiques, retailers and wholesale partners.",
+      "Direct manufacturer supply of handcrafted bridal & festive lehengas for resellers and boutiques worldwide.",
     images: [
       {
-        url: "/images/hero/hero-main.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Aksharam Ethnic LLP",
+        url: "/products/media_1793041527137.jpg",
+        width: 768,
+        height: 1024,
+        alt: "Aksharam Textiles Bridal Silk Lehenga",
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Aksharam Ethnic LLP | Contemporary Indian Ethnic Wear",
-    description:
-      "Aksharam Ethnic LLP creates contemporary Indian ethnic fashion for boutiques, retailers and wholesale partners.",
-    images: ["/images/hero/hero-main.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
   },
   icons: {
     icon: "/icon.svg",
@@ -83,46 +83,21 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ClothingStore",
-    "@id": "https://aksharam.co/#organization",
-    name: siteConfig.companyName,
-    alternateName: "Aksharam",
-    url: siteConfig.url,
-    logo: "https://aksharam.co/brand/aksharam-logo-transparent.png",
-    description: siteConfig.tagline,
-    telephone: siteConfig.phone,
-    email: siteConfig.email,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: `${siteConfig.address.line1}, ${siteConfig.address.line2}, ${siteConfig.address.line3}`,
-      addressLocality: siteConfig.address.city,
-      addressRegion: siteConfig.address.state,
-      postalCode: siteConfig.address.pincode,
-      addressCountry: "IN",
-    },
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: siteConfig.phone,
-      contactType: "sales",
-      areaServed: "Worldwide",
-    },
-  };
-
   return (
-    <html lang="en" className={`${manrope.variable} scroll-smooth`}>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
-      <body className="min-h-screen bg-[#FAFAF8] text-[#171717] flex flex-col font-sans antialiased">
-        <Navbar />
-        <main className="flex-grow">{children}</main>
-        <Footer />
-        <WhatsAppFloatingButton />
+    <html
+      lang="en"
+      className={`${playfair.variable} ${manrope.variable} scroll-smooth`}
+    >
+      <body className="min-h-screen bg-[#FAF7F2] text-[#1C1917] flex flex-col font-sans antialiased selection:bg-[#7D1D2B] selection:text-white">
+        <CartProvider>
+          <Navbar />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+          <CartDrawer />
+          <OrderReviewModal />
+          <ToastNotification />
+          <WhatsAppFloatingButton />
+        </CartProvider>
       </body>
     </html>
   );

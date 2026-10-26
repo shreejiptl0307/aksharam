@@ -1,25 +1,34 @@
 export const siteConfig = {
-  name: "AKSHARAM",
-  companyName: "AKSHARAM ETHNIC LLP",
-  tagline: "Handcrafted Lehengas & Sarees",
-  subtagline: "Designer lehengas and handcrafted sarees for boutiques, retailers and modern wardrobes.",
-  statementHeadline: "Indian craftsmanship, shaped for contemporary celebrations.",
+  name: "AKSHARAM TEXTILES",
+  companyName: "AKSHARAM TEXTILES",
+  portalSubtitle: "B2B Wholesale Portal & Direct Manufacturer Supply",
+  tagline: "Manufacturer & Wholesale Supplier of Luxury Indian Ethnic Wear",
+  subtagline: "Exclusive bridal silk, festive silk, and tissue lehengas supplied directly to boutiques, retailers, and resellers worldwide.",
+  statementHeadline: "Direct Mill Craftsmanship & Wholesale Excellence from Surat",
   statementBody:
-    "Aksharam Ethnic LLP designs and manufactures handcrafted lehengas and festive sarees for retailers and boutiques, combining thoughtful detailing, authentic craftsmanship and reliable supply.",
-  url: "https://aksharam.co",
-  canonicalUrl: "https://aksharam.co",
-  brandRed: "#DB2D1C",
-  logo: {
-    src: "/brand/aksharam-logo-transparent.png",
-    masterSrc: "/brand/aksharam-logo-master.png",
-    alt: "Aksharam Ethnic LLP Logo",
-    width: 962,
-    height: 259,
+    "Aksharam Textiles designs and manufactures premier handcrafted lehengas for high-volume resellers and boutique stockists. We provide direct factory production, verified design codes, and prompt wholesale dispatches.",
+  url: "https://aksharamtextiles.com",
+  canonicalUrl: "https://aksharamtextiles.com",
+  brandColors: {
+    burgundy: "#7D1D2B", // Deep restrained burgundy
+    burgundyDark: "#58121C",
+    gold: "#C5A880", // Refined warm gold
+    ivory: "#FAF7F2", // Luxury warm ivory
+    beige: "#F2EBE1",
+    charcoal: "#1C1917", // Rich dark charcoal
+    cardBg: "#FFFFFF",
+    border: "#EAE5DC",
   },
-  phone: "+91 78018 23811",
-  phoneRaw: "917801823811",
-  email: "aksharamethnic@gmail.com",
+  phone: "+91 9998283811",
+  phoneRaw: "919998283811",
+  whatsapp: {
+    number: "919998283811",
+    displayNumber: "+91 9998283811",
+    cleanNumber: "9998283811",
+  },
+  email: "orders@aksharamtextiles.com",
   address: {
+    facility: "Aksharam Textiles Mill Unit",
     line1: "First Floor, Plot No. D-134-135",
     line2: "Laxmi Narayan Industrial Park, Udhna Navsari Road",
     line3: "Near BRC Complex",
@@ -32,29 +41,29 @@ export const siteConfig = {
   },
   googleMapsUrl:
     "https://www.google.com/maps/search/?api=1&query=First+Floor+Plot+No+D-134-135+Laxmi+Narayan+Industrial+Park+Udhna+Navsari+Road+Near+BRC+Complex+Surat+Gujarat+394210+India",
-  whatsapp: {
-    number: "917801823811",
-    defaultMessage:
-      "Hello Aksharam, I'm interested in your lehenga and saree collections. Please share more information about your latest catalogue and wholesale requirements.",
-    customisationMessage:
-      "Hello Aksharam, I would like to discuss lehenga and saree customisation requirements for my boutique.",
-  },
-  instagram: {
-    handle: "@krishree_",
-    username: "krishree_",
-    url: "https://www.instagram.com/krishree_/",
+  admin: {
+    defaultPin: "aksharam2026",
   },
   navLinks: [
-    { label: "Collections", href: "/collections" },
-    { label: "About", href: "/about" },
-    { label: "Wholesale", href: "/wholesale" },
-    { label: "Contact", href: "/contact" },
+    { label: "Home", href: "/" },
+    { label: "All Catalogue", href: "/catalogue" },
+    { label: "Bridal Silk", href: "/catalogue?category=Bridal+Silk" },
+    { label: "Festive Silk", href: "/catalogue?category=Festive+Silk" },
+    { label: "Tissue Lehengas", href: "/catalogue?category=Tissue" },
+    { label: "Wholesale Terms", href: "/#wholesale-terms" },
+    { label: "Admin Portal", href: "/admin" },
   ],
 };
 
+export function getWhatsAppClickUrl(message: string): string {
+  const encoded = encodeURIComponent(message);
+  return `https://api.whatsapp.com/send?phone=${siteConfig.whatsapp.number}&text=${encoded}`;
+}
+
 export function getWhatsAppUrl(customMessage?: string): string {
   const msg = encodeURIComponent(
-    customMessage || siteConfig.whatsapp.defaultMessage
+    customMessage ||
+      "Hello Aksharam Textiles, I am interested in your wholesale lehenga collections."
   );
-  return `https://wa.me/${siteConfig.whatsapp.number}?text=${msg}`;
+  return `https://api.whatsapp.com/send?phone=${siteConfig.whatsapp.number}&text=${msg}`;
 }

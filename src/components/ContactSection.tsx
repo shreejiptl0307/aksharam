@@ -1,115 +1,101 @@
-import { siteConfig, getWhatsAppUrl } from "@/data/siteConfig";
-import ScrollReveal from "@/components/ScrollReveal";
+import { siteConfig } from "@/data/siteConfig";
+import { MessageCircle, Phone, Mail, MapPin } from "lucide-react";
 
 export default function ContactSection() {
+  const waUrl = `https://api.whatsapp.com/send?phone=${siteConfig.whatsapp.number}&text=${encodeURIComponent(
+    "Hello Aksharam Textiles, I want to inquire about wholesale orders for my boutique."
+  )}`;
+
   return (
-    <section id="contact" className="py-12 sm:py-16 md:py-20 lg:py-24 px-5 sm:px-8 lg:px-16 max-w-[1440px] mx-auto border-t border-[#E4E2DD]">
+    <section id="contact" className="py-16 sm:py-20 px-5 sm:px-8 lg:px-16 max-w-[1440px] mx-auto border-t border-[#EAE5DC] bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14">
         {/* Left Column */}
-        <div className="lg:col-span-5 space-y-2 sm:space-y-3">
-          <ScrollReveal>
-            <p className="text-xs uppercase tracking-[0.2em] text-[#66635F]">
-              Contact
-            </p>
-            <h2
-              style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.25rem)" }}
-              className="font-light text-[#171717] tracking-tight"
-            >
-              AKSHARAM ETHNIC LLP
-            </h2>
-            <p className="text-xs sm:text-sm text-[#66635F] font-light max-w-sm pt-1 leading-relaxed">
-              Wholesale inquiries, seasonal catalogues, sample review and boutique appointments.
-            </p>
-          </ScrollReveal>
+        <div className="lg:col-span-5 space-y-3">
+          <p className="text-xs uppercase tracking-widest text-[#7D1D2B] font-semibold">
+            Manufacturer Information
+          </p>
+          <h2 className="font-serif text-3xl font-medium text-[#1C1917]">
+            AKSHARAM TEXTILES
+          </h2>
+          <p className="text-xs sm:text-sm text-[#78716C] font-light max-w-sm leading-relaxed">
+            Wholesale inquiries, seasonal bridal catalogues, piece counts, and boutique consignments.
+          </p>
         </div>
 
-        {/* Right Column: Address & Plain Text Action Links */}
+        {/* Right Column: Address & Direct Communication */}
         <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
           <div>
-            <ScrollReveal delay={80}>
-              <p className="text-xs uppercase tracking-[0.15em] text-[#171717] font-medium mb-2">
-                Atelier & Office
+            <p className="text-xs uppercase tracking-wider text-[#1C1917] font-semibold mb-2">
+              Mill Unit & Facility
+            </p>
+            <div className="text-xs sm:text-sm text-[#57534E] font-light leading-relaxed space-y-1">
+              <p>{siteConfig.address.facility}</p>
+              <p>{siteConfig.address.line1}</p>
+              <p>{siteConfig.address.line2}</p>
+              <p>{siteConfig.address.line3}</p>
+              <p>
+                {siteConfig.address.city}, {siteConfig.address.state} {siteConfig.address.pincode}
               </p>
-              <div className="text-xs sm:text-sm text-[#66635F] font-light leading-relaxed space-y-1">
-                <p>{siteConfig.address.line1}</p>
-                <p>{siteConfig.address.line2}</p>
-                <p>{siteConfig.address.line3}</p>
-                <p>
-                  {siteConfig.address.city}, {siteConfig.address.state} {siteConfig.address.pincode}
-                </p>
-                <p>{siteConfig.address.country}</p>
-              </div>
-            </ScrollReveal>
+              <p>{siteConfig.address.country}</p>
+            </div>
           </div>
 
           <div>
-            <ScrollReveal delay={140}>
-              <p className="text-xs uppercase tracking-[0.15em] text-[#171717] font-medium mb-2">
-                Direct Communication
-              </p>
-              <div className="text-xs sm:text-sm text-[#66635F] font-light leading-relaxed space-y-1.5 mb-4 sm:mb-5">
-                <p>
-                  <a
-                    href={`tel:${siteConfig.phone}`}
-                    className="hover:text-[#171717] transition-colors py-1 inline-block"
-                  >
-                    {siteConfig.phone}
-                  </a>
-                </p>
-                <p>
-                  <a
-                    href={`mailto:${siteConfig.email}`}
-                    className="hover:text-[#171717] transition-colors break-all py-1 inline-block"
-                  >
-                    {siteConfig.email}
-                  </a>
-                </p>
-              </div>
-
-              {/* Plain Text Links with 44px min tap targets */}
-              <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs uppercase tracking-[0.15em] font-medium text-[#171717] pt-2 border-t border-[#E4E2DD]">
+            <p className="text-xs uppercase tracking-wider text-[#1C1917] font-semibold mb-2">
+              Direct Communication Desk
+            </p>
+            <div className="text-xs sm:text-sm text-[#57534E] font-light leading-relaxed space-y-2 mb-4">
+              <p className="flex items-center space-x-2">
+                <MessageCircle className="w-4 h-4 text-[#25D366]" />
                 <a
-                  href={getWhatsAppUrl()}
+                  href={waUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group min-h-[44px] inline-flex items-center space-x-1 hover:opacity-60 transition-opacity py-2"
+                  className="font-mono font-bold text-[#1C1917] hover:text-[#7D1D2B]"
                 >
-                  <span>WhatsApp</span>
-                  <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5">
-                    →
-                  </span>
+                  WhatsApp: +91 9998283811
                 </a>
+              </p>
+              <p className="flex items-center space-x-2">
+                <Phone className="w-4 h-4 text-[#78716C]" />
                 <a
-                  href={`tel:${siteConfig.phone}`}
-                  className="group min-h-[44px] inline-flex items-center space-x-1 hover:opacity-60 transition-opacity py-2"
+                  href={`tel:${siteConfig.phoneRaw}`}
+                  className="hover:text-[#1C1917]"
                 >
-                  <span>Call</span>
-                  <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5">
-                    →
-                  </span>
+                  Phone: {siteConfig.phone}
                 </a>
+              </p>
+              <p className="flex items-center space-x-2">
+                <Mail className="w-4 h-4 text-[#78716C]" />
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="group min-h-[44px] inline-flex items-center space-x-1 hover:opacity-60 transition-opacity py-2"
+                  className="hover:text-[#1C1917]"
                 >
-                  <span>Email</span>
-                  <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5">
-                    →
-                  </span>
+                  {siteConfig.email}
                 </a>
-                <a
-                  href={siteConfig.googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group min-h-[44px] inline-flex items-center space-x-1 hover:opacity-60 transition-opacity py-2"
-                >
-                  <span>Directions</span>
-                  <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5">
-                    →
-                  </span>
-                </a>
-              </div>
-            </ScrollReveal>
+              </p>
+            </div>
+
+            <div className="pt-2 border-t border-[#EAE5DC] flex flex-wrap gap-3 text-xs uppercase tracking-wider font-semibold">
+              <a
+                href={waUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7D1D2B] hover:underline flex items-center space-x-1"
+              >
+                <span>WhatsApp Desk</span>
+                <span>→</span>
+              </a>
+              <a
+                href={siteConfig.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#78716C] hover:text-[#1C1917] flex items-center space-x-1"
+              >
+                <span>Surat Location</span>
+                <span>→</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

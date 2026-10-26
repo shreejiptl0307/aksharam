@@ -7,9 +7,9 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { siteConfig } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
-  title: "About | Aksharam Ethnic LLP",
+  title: "About Our Mill | Aksharam Textiles Surat",
   description:
-    "Learn about Aksharam Ethnic LLP, our Surat manufacturing atelier, our focus on craftsmanship, quality and long-term wholesale relationships.",
+    "Learn about Aksharam Textiles, our Surat manufacturing unit, craftsmanship standards, and wholesale supply to boutiques across India and worldwide.",
 };
 
 export default function AboutPage() {

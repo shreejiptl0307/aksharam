@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { X, Plus, Minus, Trash2, ArrowRight, ShoppingBag } from "lucide-react";
+import CartQuantityInput from "@/components/CartQuantityInput";
 
 export default function CartDrawer() {
   const {
@@ -127,18 +128,12 @@ export default function CartDrawer() {
                         >
                           <Minus className="w-2.5 h-2.5" />
                         </button>
-                        <input
-                          type="number"
-                          min="1"
-                          value={item.quantity}
-                          onChange={(e) => {
-                            const val = parseInt(e.target.value, 10);
-                            updateQuantity(
-                              item.product.id,
-                              isNaN(val) || val < 1 ? 1 : val
-                            );
-                          }}
-                          className="w-8 h-6 text-center text-xs font-bold text-[#1C1917] focus:outline-hidden"
+                        <CartQuantityInput
+                          quantity={item.quantity}
+                          onUpdate={(newQty) =>
+                            updateQuantity(item.product.id, newQty)
+                          }
+                          className="w-8 h-6 text-center text-xs font-bold text-[#1C1917] bg-transparent focus:outline-hidden focus:bg-[#FAF7F2]"
                         />
                         <button
                           type="button"

@@ -29,15 +29,18 @@ export default function ProductDetailClient({
   relatedProducts,
 }: Props) {
   const { addToCart, setIsCartOpen } = useCart();
-  const [quantity, setQuantity] = useState<number>(1);
+  const [quantity, setQuantity] = useState<number | string>(1);
   const [selectedImage, setSelectedImage] = useState<string>(product.image);
   const [isAdded, setIsAdded] = useState(false);
 
-  const handleIncrement = () => setQuantity((q) => q + 1);
-  const handleDecrement = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
+  const parsedQuantity = Math.max(1, parseInt(String(quantity), 10) || 1);
+
+  const handleIncrement = () => setQuantity(parsedQuantity + 1);
+  const handleDecrement = () => setQuantity(Math.max(1, parsedQuantity - 1));
 
   const handleAddToCart = () => {
-    addToCart(product, quantity);
+    addToCart(product, parsedQuantity);
+    setQuantity(parsedQuantity);
     setIsAdded(true);
     setTimeout(() => setIsAdded(false), 2000);
   };
@@ -56,7 +59,7 @@ export default function ProductDetailClient({
       `Product Name: ${product.name}`,
       `Category: ${product.category}`,
       `Fabric: ${product.fabric} | Color: ${product.color}`,
-      `Requested Quantity: ${quantity} pieces`,
+      `Requested Quantity: ${parsedQuantity} pieces`,
       `Product Image: ${fullImg}`,
       ``,
       `Please confirm stock availability, wholesale booking, and dispatch schedule.`,
@@ -209,7 +212,7 @@ export default function ProductDetailClient({
                   Wholesale Quantity (Pieces):
                 </span>
                 <span className="text-xs text-[#78716C]">
-                  {quantity} {quantity === 1 ? "Piece" : "Pieces"} Selected
+                  {parsedQuantity} {parsedQuantity === 1 ? "Piece" : "Pieces"} Selected
                 </span>
               </div>
 
@@ -221,7 +224,7 @@ export default function ProductDetailClient({
                     type="button"
                     onClick={() => setQuantity(preset)}
                     className={`flex-1 py-1.5 text-xs font-semibold border transition-colors ${
-                      quantity === preset
+                      parsedQuantity === preset
                         ? "bg-[#7D1D2B] text-white border-[#7D1D2B]"
                         : "bg-[#FAF7F2] text-[#44403C] border-[#D6CEC1] hover:bg-[#ECE6DC]"
                     }`}
@@ -242,14 +245,27 @@ export default function ProductDetailClient({
                   <Minus className="w-4 h-4" />
                 </button>
                 <input
-                  type="number"
-                  min="1"
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
                   value={quantity}
+                  onFocus={(e) => e.target.select()}
                   onChange={(e) => {
-                    const val = parseInt(e.target.value, 10);
-                    setQuantity(isNaN(val) || val < 1 ? 1 : val);
+                    const raw = e.target.value;
+                    if (raw === "") {
+                      setQuantity("");
+                      return;
+                    }
+                    const clean = raw.replace(/\D/g, "");
+                    setQuantity(clean === "" ? "" : parseInt(clean, 10));
                   }}
-                  className="flex-grow h-12 text-center font-bold text-base bg-transparent text-[#1C1917] focus:outline-hidden"
+                  onBlur={() => {
+                    if (quantity === "" || Number(quantity) < 1) {
+                      setQuantity(1);
+                    }
+                  }}
+                  className="flex-grow h-12 text-center font-bold text-base bg-transparent text-[#1C1917] focus:outline-hidden focus:bg-white"
+                  aria-label="Quantity"
                 />
                 <button
                   type="button"
@@ -276,12 +292,12 @@ export default function ProductDetailClient({
                 {isAdded ? (
                   <>
                     <Check className="w-4 h-4" />
-                    <span>Added {quantity} Pieces to Cart!</span>
+                    <span>Added {parsedQuantity} Pieces to Cart!</span>
                   </>
                 ) : (
                   <>
                     <ShoppingBag className="w-4 h-4" />
-                    <span>Add {quantity} Pieces to Wholesale Cart</span>
+                    <span>Add {parsedQuantity} Pieces to Wholesale Cart</span>
                   </>
                 )}
               </button>

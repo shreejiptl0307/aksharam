@@ -26,6 +26,7 @@ import {
   FileDown,
   Sparkles,
 } from "lucide-react";
+import CartQuantityInput from "@/components/CartQuantityInput";
 
 export default function OrderReviewModal() {
   const {
@@ -214,9 +215,13 @@ export default function OrderReviewModal() {
                             >
                               <Minus className="w-3 h-3" />
                             </button>
-                            <span className="w-8 h-7 flex items-center justify-center text-xs font-bold text-[#1C1917]">
-                              {item.quantity}
-                            </span>
+                            <CartQuantityInput
+                              quantity={item.quantity}
+                              onUpdate={(newQty) =>
+                                updateQuantity(item.product.id, newQty)
+                              }
+                              className="w-9 h-7 text-center text-xs font-bold text-[#1C1917] bg-transparent focus:outline-hidden focus:bg-white"
+                            />
                             <button
                               type="button"
                               onClick={() =>

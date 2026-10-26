@@ -15,6 +15,7 @@ import {
   Truck,
   MessageCircle,
 } from "lucide-react";
+import CartQuantityInput from "@/components/CartQuantityInput";
 
 export default function CartPage() {
   const {
@@ -132,18 +133,12 @@ export default function CartPage() {
                         >
                           <Minus className="w-3 h-3" />
                         </button>
-                        <input
-                          type="number"
-                          min="1"
-                          value={item.quantity}
-                          onChange={(e) => {
-                            const val = parseInt(e.target.value, 10);
-                            updateQuantity(
-                              item.product.id,
-                              isNaN(val) || val < 1 ? 1 : val
-                            );
-                          }}
-                          className="w-12 h-8 text-center text-xs font-bold text-[#1C1917] focus:outline-hidden"
+                        <CartQuantityInput
+                          quantity={item.quantity}
+                          onUpdate={(newQty) =>
+                            updateQuantity(item.product.id, newQty)
+                          }
+                          className="w-12 h-8 text-center text-xs font-bold text-[#1C1917] bg-transparent focus:outline-hidden focus:bg-white"
                         />
                         <button
                           type="button"

@@ -14,22 +14,25 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, onQuickView }: ProductCardProps) {
   const { addToCart } = useCart();
-  const [quantity, setQuantity] = useState<number>(1);
+  const [quantity, setQuantity] = useState<number | string>(1);
   const [isAdded, setIsAdded] = useState(false);
+
+  const parsedQuantity = Math.max(1, parseInt(String(quantity), 10) || 1);
 
   const handleIncrement = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setQuantity((prev) => prev + 1);
+    setQuantity(parsedQuantity + 1);
   };
 
   const handleDecrement = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+    setQuantity(Math.max(1, parsedQuantity - 1));
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
-    addToCart(product, quantity);
+    addToCart(product, parsedQuantity);
+    setQuantity(parsedQuantity);
     setIsAdded(true);
     setTimeout(() => {
       setIsAdded(false);
@@ -133,14 +136,32 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
                 <Minus className="w-3 h-3" />
               </button>
               <input
-                type="number"
-                min="1"
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
                 value={quantity}
-                onChange={(e) => {
-                  const val = parseInt(e.target.value, 10);
-                  setQuantity(isNaN(val) || val < 1 ? 1 : val);
+                onClick={(e) => e.stopPropagation()}
+                onFocus={(e) => {
+                  e.stopPropagation();
+                  e.target.select();
                 }}
-                className="w-9 h-7 sm:w-10 sm:h-8 text-center text-xs font-bold bg-transparent text-[#1C1917] focus:outline-hidden"
+                onChange={(e) => {
+                  e.stopPropagation();
+                  const raw = e.target.value;
+                  if (raw === "") {
+                    setQuantity("");
+                    return;
+                  }
+                  const clean = raw.replace(/\D/g, "");
+                  setQuantity(clean === "" ? "" : parseInt(clean, 10));
+                }}
+                onBlur={() => {
+                  if (quantity === "" || Number(quantity) < 1) {
+                    setQuantity(1);
+                  }
+                }}
+                className="w-9 h-7 sm:w-10 sm:h-8 text-center text-xs font-bold bg-transparent text-[#1C1917] focus:outline-hidden focus:bg-white"
+                aria-label="Quantity"
               />
               <button
                 type="button"
@@ -166,12 +187,12 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
             {isAdded ? (
               <>
                 <Check className="w-4 h-4" />
-                <span>Added {quantity} Pieces ✓</span>
+                <span>Added {parsedQuantity} Pieces ✓</span>
               </>
             ) : (
               <>
                 <ShoppingBag className="w-3.5 h-3.5" />
-                <span>Add {quantity} {quantity === 1 ? "Piece" : "Pieces"}</span>
+                <span>Add {parsedQuantity} {parsedQuantity === 1 ? "Piece" : "Pieces"}</span>
               </>
             )}
           </button>
